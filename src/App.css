@@ -1,38 +1,224 @@
-.App {
-  text-align: center;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+    background-color: #f8f9fa;
+    padding: 20px;
+
+    margin: 0 auto; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.navbar .logo {
+    color: #333;
+    font-size: 24px;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar ul li a.exit {
+    color: rgb(0, 0, 0);
+}
+
+.navbar ul li a.notification {
+    color: rgb(0, 0, 0);
+}
+
+.navbar ul li a:hover {
+    color: #35506e;
+}
+
+.green-box {
+    width: 30px;
+    height: 30px;
+    background-color: green;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.green-box:hover {
+    background-color: #32CD32;
+}
+
+.green-box-text {
+    color: white;
+    font-weight: bold;
+}
+
+.greeting {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.filter {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    background-color: #f8f9fa;
+    color: #333;
+    cursor: pointer;
+}
+
+.search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    width: 200px;
+}
+
+.suggestions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #bbb;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.suggestions h2 {
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.suggestion-box {
+    background-color: #f0f0f0;
+    padding: 8px;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.suggestions-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.suggestions-list .suggestion-box a {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.3s;
+}
+
+.suggestions-list .suggestion-box a:hover {
+    color: #0056b3;
+}
+
+.big-box-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    max-width: 1140px;
+    margin: 0 auto; /* Container'ı ortala */
+}
+
+.big-box-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    max-width: 1140px;
+}
+
+.big-box {
+    background-color: #ffffff;
+    width: 24%; /* PC için 4 sütunlu */
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px; /* Her kutu arasında boşluk */
+}
+
+.box-content {
+    padding: 5px;
+    text-align: center;
+}
+
+.big-box img {
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 5px; /* Resimlerin üst aralığı */
+}
+
+.box-content h3 a {
+    margin: 10px 0 5px;
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+    word-break: break-word;
+}
+
+.box-content h3 a:hover {
+    color: #2e9add;
+}
+
+.box-content p {
+    font-size: 14px;
+    color: #aaa;
+    word-break: break-word;
+}
+
+
+
+@media (max-width: 700px) {
+    .big-box-row {
+        flex-direction: column;
+    }
+    .big-box {
+        width: 100%; 
+    }
+    
+}
+
+@media (max-width: 1024px) {
+    .big-box-row {
+        flex-wrap: wrap;
+    }
+    .big-box {
+        flex: 1 1 calc(50% - 10px);
+    }
 }
