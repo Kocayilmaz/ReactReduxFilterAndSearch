@@ -5,7 +5,7 @@ import { SimpleGrid } from '@mantine/core';
 
 export const BoxContainer = () => {
   const [cardData, setCardData] = useState([]);
-
+  
   useEffect(() => {
     fetchCardItems()
       .then((res) => {
