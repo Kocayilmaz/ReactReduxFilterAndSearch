@@ -1,59 +1,58 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-}
-
-.container {
+  }
+  
+  .container {
     background-color: #f8f9fa;
     padding: 20px;
-
-    margin: 0 auto; 
-}
-
-.navbar {
+    margin: 0 auto;
+  }
+  
+  .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     background-color: #fff;
     border-bottom: 1px solid #ccc;
-}
-
-.navbar .logo {
+  }
+  
+  .navbar .logo {
     color: #333;
     font-size: 24px;
-}
-
-.navbar ul {
+  }
+  
+  .navbar ul {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
-}
-
-.navbar ul li {
+  }
+  
+  .navbar ul li {
     margin-left: 20px;
-}
-
-.navbar ul li a {
+  }
+  
+  .navbar ul li a {
     font-size: 18px;
     text-decoration: none;
     transition: color 0.3s;
-}
-
-.navbar ul li a.exit {
+  }
+  
+  .navbar ul li a.exit {
     color: rgb(0, 0, 0);
-}
-
-.navbar ul li a.notification {
+  }
+  
+  .navbar ul li a.notification {
     color: rgb(0, 0, 0);
-}
-
-.navbar ul li a:hover {
+  }
+  
+  .navbar ul li a:hover {
     color: #35506e;
-}
-
-.green-box {
+  }
+  
+  .green-box {
     width: 30px;
     height: 30px;
     background-color: green;
@@ -62,31 +61,31 @@ body {
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s;
-}
-
-.green-box:hover {
-    background-color: #32CD32;
-}
-
-.green-box-text {
+  }
+  
+  .green-box:hover {
+    background-color: #32cd32;
+  }
+  
+  .green-box-text {
     color: white;
     font-weight: bold;
-}
-
-.greeting {
+  }
+  
+  .greeting {
     color: #333;
     font-size: 24px;
     text-align: center;
     margin-top: 20px;
-}
-
-.search-container {
+  }
+  
+  .search-container {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-}
-
-.filter {
+  }
+  
+  .filter {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -94,18 +93,18 @@ body {
     background-color: #f8f9fa;
     color: #333;
     cursor: pointer;
-}
-
-.search-input {
+  }
+  
+  .search-input {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-left: none;
     border-radius: 0 4px 4px 0;
     width: 200px;
-}
-
-.suggestions {
+  }
+  
+  .suggestions {
     margin-top: 20px;
     display: flex;
     justify-content: center;
@@ -114,111 +113,66 @@ body {
     color: #bbb;
     font-size: 14px;
     margin-bottom: 30px;
-}
-
-.suggestions h2 {
+  }
+  
+  .suggestions h2 {
     margin-right: 10px;
     font-size: 12px;
-}
-
-.suggestion-box {
+  }
+  
+  .suggestion-box {
     background-color: #f0f0f0;
     padding: 8px;
     border-radius: 8px;
     margin-right: 10px;
-}
-
-.suggestions-list {
+  }
+  
+  .suggestions-list {
     list-style: none;
     padding: 0;
     display: flex;
-}
-
-.suggestions-list .suggestion-box a {
-    color: #007BFF;
+  }
+  
+  .suggestions-list .suggestion-box a {
+    color: #007bff;
     text-decoration: none;
     font-size: 12px;
     transition: color 0.3s;
-}
-
-.suggestions-list .suggestion-box a:hover {
+  }
+  
+  .suggestions-list .suggestion-box a:hover {
     color: #0056b3;
-}
-
-.big-box-container {
+  }
+  
+  .big-box-container {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
     max-width: 1140px;
-    margin: 0 auto; /* Container'ı ortala */
-}
-
-.big-box-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    max-width: 1140px;
-}
-
-.big-box {
-    background-color: #ffffff;
-    width: 24%; /* PC için 4 sütunlu */
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 20px; /* Her kutu arasında boşluk */
-}
-
-.box-content {
-    padding: 5px;
-    text-align: center;
-}
-
-.big-box img {
-    width: 80%;
-    height: auto;
-    object-fit: cover;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    margin-top: 5px; /* Resimlerin üst aralığı */
-}
-
-.box-content h3 a {
-    margin: 10px 0 5px;
-    font-size: 18px;
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s;
-    word-break: break-word;
-}
-
-.box-content h3 a:hover {
-    color: #2e9add;
-}
-
-.box-content p {
-    font-size: 14px;
-    color: #aaa;
-    word-break: break-word;
-}
-
-
-
-@media (max-width: 700px) {
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 700px) {
     .big-box-row {
-        flex-direction: column;
+      flex-direction: column;
     }
     .big-box {
-        width: 100%; 
+      width: 100%;
     }
-    
-}
-
-@media (max-width: 1024px) {
-    .big-box-row {
-        flex-wrap: wrap;
-    }
+  }
+  
+  @media (max-width: 1024px) {
     .big-box {
-        flex: 1 1 calc(50% - 10px);
+      width: 31%; /* Tabletler için 3 sütunlu */
     }
-}
+  }
+  
+  .custom-card {
+    background-color: #f0f0f0;
+    transition: transform 0.3s;
+  }
+  
+  .custom-card:hover {
+    transform: scale(1.05);
+  }
+  
