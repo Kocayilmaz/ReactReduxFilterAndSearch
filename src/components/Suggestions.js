@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const Suggestions = ({ title }) => {
-    return (
-        <div className="suggestions-list">
-            <div className="suggestion-box"><a href="#">{title}</a></div>
-        </div>
-    );
+export const Suggestions = ({ title, onClick }) => {
+  return (
+    <button className="suggestion-item" onClick={onClick}>
+      {title}
+    </button>
+  );
 };

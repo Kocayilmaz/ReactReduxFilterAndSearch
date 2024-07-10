@@ -1,40 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { Skeleton } from '@mantine/core';
 import { Suggestions } from './Suggestions';
+import { fetchCardItems } from '../util/fetchCardItems';
+import _ from 'lodash';
 
-export const SuggestionsList = ({ head }) => {
-    const [loading, setLoading] = useState(true);
+export const SuggestionsList = ({ head, setFilteredData }) => {
+  const [loading, setLoading] = useState(true);
+  const [suggestions, setSuggestions] = useState([]);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 2000); // 
+  useEffect(() => {
+    fetchCardItems()
+      .then((res) => {
+        const tags = _.uniq(_.flatten(res.data.items.map(item => item.tags)));
+        setSuggestions(tags);
+        setLoading(false);
+      })
+      .catch((err) => console.error(err.message));
+  }, []);
 
-        return () => clearTimeout(timer); 
-    }, []);
-
-    return (
-        <div className="suggestions">
-            {loading ? (
-                <>
-                    <Skeleton height={20} width="40%" mb="sm" />
-                    <div className="suggestions-list">
-                        <Skeleton height={40} width="20%" mr="sm" />
-                        <Skeleton height={40} width="20%" mr="sm" />
-                        <Skeleton height={40} width="20%" mr="sm" />
-                        <Skeleton height={40} width="20%" />
-                    </div>
-                </>
-            ) : (
-                <>
-                    <h2>{head}</h2>
-                    <Suggestions title={"Slider"} />
-                    <Suggestions title={"Tutorial"} />
-                    <Suggestions title={"Html"} />
-                    <Suggestions title={"Prototyping"} />
-                    <Suggestions title={"Css 3"} />
-                </>
-            )}
-        </div>
-    );
+  const handleSuggestionClick = (tag) => {
+    fetchCardItems()
+      .then((res) => {
+        const filteredItems = res.data.items.filter((item) => {
+          return item.tags.includes(tag); // Sadece tıklanan etikete sahip öğeleri filtrele
+        });
+        setFilteredData(filteredItems);
+      })
+      .catch((err) => console.error(err.message));
+  };
+  
+  return (
+    <div className="suggestions">
+      {loading ? (
+        <>
+          <Skeleton height={20} width="40%" mb="sm" />
+          <div className="suggestions-list">
+            <Skeleton height={40} width="20%" mr="sm" />
+            <Skeleton height={40} width="20%" mr="sm" />
+            <Skeleton height={40} width="20%" mr="sm" />
+            <Skeleton height={40} width="20%" />
+          </div>
+        </>
+      ) : (
+        <>
+          <h2>{head}</h2>
+          {suggestions.map((tag) => (
+            <Suggestions key={tag} title={tag} onClick={() => handleSuggestionClick(tag)} />
+          ))}
+        </>
+      )}
+    </div>
+  );
 };
