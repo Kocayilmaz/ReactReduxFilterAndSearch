@@ -1,8 +1,9 @@
+// CustomCard.js
 import React, { useState } from 'react';
-import { Card, Image, Text, Button, Group, Skeleton } from '@mantine/core';
+import { Card, Image, Text, Skeleton } from '@mantine/core';
 import './CustomCard.css';
 
-export const CustomCard = ({ imageLink, title, desc, buttonText }) => {
+export const CustomCard = ({ imageLink, title, desc }) => {
   const [loaded, setLoaded] = useState(false);
 
   return (
@@ -21,25 +22,15 @@ export const CustomCard = ({ imageLink, title, desc, buttonText }) => {
       {!loaded ? (
         <Skeleton height={20} mt="md" />
       ) : (
-        <Group justify="space-between" mt="md" mb="xs">
-          <Text fw={500} className="card-title">{title}</Text>
-        </Group>
+        <Text fw={500} className="card-title" mt="md" mb="xs">{title}</Text>
       )}
 
       {!loaded ? (
         <Skeleton height={12} mt="sm" />
       ) : (
-        <Text size="sm" c="dimmed" className="card-desc">
+        <Text size="sm" color="dimmed" className="card-desc">
           {desc}
         </Text>
-      )}
-
-      {!loaded ? (
-        <Skeleton height={36} mt="md" radius="md" />
-      ) : (
-        <Button color="blue" fullWidth mt="md" radius="md">
-          {buttonText}
-        </Button>
       )}
     </Card>
   );

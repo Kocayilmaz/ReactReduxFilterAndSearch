@@ -36,7 +36,6 @@ export const BoxContainer = ({ filteredData }) => {
               title={card.title}
               desc={card.desc}
               imageLink={card.image}
-              buttonText="Book classic tour now"
             />
           ))}
         </SimpleGrid>

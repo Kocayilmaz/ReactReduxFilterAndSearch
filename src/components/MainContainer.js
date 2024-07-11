@@ -4,6 +4,8 @@ import { SearchContainer } from './SearchContainer';
 import { SuggestionsList } from './SuggestionsList';
 import { BoxContainer } from './BoxContainer';
 
+
+
 export const MainContainer = () => {
   const [filteredData, setFilteredData] = useState([]);
 

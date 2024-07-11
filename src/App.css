@@ -18,11 +18,6 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
-.navbar .logo {
-  color: #333;
-  font-size: 24px;
-}
-
 .navbar ul {
   list-style: none;
   display: flex;
@@ -40,36 +35,13 @@ body {
   transition: color 0.3s;
 }
 
-.navbar ul li a.exit {
-  color: rgb(0, 0, 0);
-}
-
+.navbar ul li a.exit,
 .navbar ul li a.notification {
   color: rgb(0, 0, 0);
 }
 
 .navbar ul li a:hover {
   color: #35506e;
-}
-
-.green-box {
-  width: 30px;
-  height: 30px;
-  background-color: green;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s;
-}
-
-.green-box:hover {
-  background-color: #32cd32;
-}
-
-.green-box-text {
-  color: white;
-  font-weight: bold;
 }
 
 .greeting {
@@ -116,17 +88,10 @@ body {
 }
 
 .suggestions h2 {
-  margin-bottom: 25px; 
+  margin-bottom: 25px;
   padding: 20px;
   font-size: 18px;
   color: #333;
-}
-
-.suggestion-box {
-  background-color: #f0f0f0;
-  padding: 8px;
-  border-radius: 8px;
-  margin-right: 10px;
 }
 
 .suggestions-list {
@@ -136,18 +101,7 @@ body {
   flex-wrap: wrap;
 }
 
-.suggestion-item {
-  padding: 10px 20px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  background-color: #ffffff;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  color: #007bff;
-}
-
+.suggestion-item,
 .suggestion-all {
   padding: 10px 20px;
   margin-right: 10px;
@@ -160,23 +114,9 @@ body {
   color: #007bff;
 }
 
-.suggestion-all:hover {
-  background-color: #d0d0d0;
-}
-
+.suggestion-all:hover,
 .suggestion-item:hover {
   background-color: #d0d0d0;
-}
-
-.suggestions-list .suggestion-box a {
-  color: #007bff;
-  text-decoration: none;
-  font-size: 12px;
-  transition: color 0.3s;
-}
-
-.suggestions-list .suggestion-box a:hover {
-  color: #0056b3;
 }
 
 .big-box-container {

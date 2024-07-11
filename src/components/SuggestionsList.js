@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Skeleton } from '@mantine/core';
+import { Skeleton, Button } from '@mantine/core';
 import { Suggestions } from './Suggestions';
 import { fetchCardItems } from '../util/fetchCardItems';
 import _ from 'lodash';
@@ -28,6 +28,7 @@ export const SuggestionsList = ({ head, setFilteredData }) => {
       })
       .catch((err) => console.error(err.message));
   };
+
   const handleAllClick = () => {
     fetchCardItems()
       .then((res) => {
@@ -36,7 +37,6 @@ export const SuggestionsList = ({ head, setFilteredData }) => {
       .catch((err) => console.error(err.message));
   };
 
-  
   return (
     <div className="suggestions">
       {loading ? (
@@ -51,14 +51,18 @@ export const SuggestionsList = ({ head, setFilteredData }) => {
         </>
       ) : (
         <>
-           <h2>{head}</h2>
+          <h2>{head}</h2>
           <div className="suggestions-list">
             {suggestions.map((tag) => (
               <Suggestions key={tag} title={tag} onClick={() => handleSuggestionClick(tag)} />
             ))}
-            <button className="suggestion-all" onClick={handleAllClick}>
+            <Button
+              variant="gradient"
+              gradient={{ from: 'rgba(0, 63, 145, 0.77)', to: 'rgba(120, 218, 240, 0.81)', deg: 237 }}
+              onClick={handleAllClick}
+            >
               All
-            </button>
+            </Button>
           </div>
         </>
       )}
