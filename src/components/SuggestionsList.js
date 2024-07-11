@@ -28,6 +28,14 @@ export const SuggestionsList = ({ head, setFilteredData }) => {
       })
       .catch((err) => console.error(err.message));
   };
+  const handleAllClick = () => {
+    fetchCardItems()
+      .then((res) => {
+        setFilteredData(res.data.items); // Tüm öğeleri getirir
+      })
+      .catch((err) => console.error(err.message));
+  };
+
   
   return (
     <div className="suggestions">
@@ -43,10 +51,15 @@ export const SuggestionsList = ({ head, setFilteredData }) => {
         </>
       ) : (
         <>
-          <h2>{head}</h2>
-          {suggestions.map((tag) => (
-            <Suggestions key={tag} title={tag} onClick={() => handleSuggestionClick(tag)} />
-          ))}
+           <h2>{head}</h2>
+          <div className="suggestions-list">
+            {suggestions.map((tag) => (
+              <Suggestions key={tag} title={tag} onClick={() => handleSuggestionClick(tag)} />
+            ))}
+            <button className="suggestion-all" onClick={handleAllClick}>
+              All
+            </button>
+          </div>
         </>
       )}
     </div>

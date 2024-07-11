@@ -5,5 +5,6 @@ export const Suggestions = ({ title, onClick }) => {
     <button className="suggestion-item" onClick={onClick}>
       {title}
     </button>
+    
   );
 };

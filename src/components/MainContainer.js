@@ -10,7 +10,7 @@ export const MainContainer = () => {
   return (
     <div className="container">
       <Navbar title={"RF"} />
-      <SearchContainer head={"Hello, May I Help You?"} title={"All Categories"} desc={"Type your questions"} />
+      <SearchContainer head={"Hello, May I Help You?"} title={"All Categories"} desc={"Type your questions"} setFilteredData={setFilteredData} />
       <SuggestionsList head={"Suggestions:"} setFilteredData={setFilteredData} />
       <BoxContainer filteredData={filteredData} />
     </div>
