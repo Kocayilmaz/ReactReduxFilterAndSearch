@@ -1,4 +1,3 @@
-// SearchContainer.js
 import React, { useState, useEffect } from 'react';
 import { Skeleton } from '@mantine/core';
 import { fetchCardItems } from '../util/fetchCardItems';
@@ -25,7 +24,7 @@ export const SearchContainer = ({ head, title, desc, setFilteredData }) => {
       .catch((err) => console.error(err.message));
   }, []);
 
-  const handleOptionChange = (selectedOption) => {
+  const handleOptionChange = async(selectedOption) => {
     setSelectedOption(selectedOption);
 
     if (selectedOption) {
@@ -45,10 +44,7 @@ export const SearchContainer = ({ head, title, desc, setFilteredData }) => {
     }
   };
 
-  const handleSearch = (e) => {
-    const term = e.target.value;
-    setSearchBar(term);
-
+  const debouncedSearch = _.debounce(async(term) => {
     fetchCardItems()
       .then((res) => {
         const filteredItems = res.data.items.filter((item) => 
@@ -58,6 +54,12 @@ export const SearchContainer = ({ head, title, desc, setFilteredData }) => {
         setFilteredData(filteredItems);
       })
       .catch((err) => console.error(err.message));
+  }, 350); 
+
+  const handleSearch = (e) => {
+    const term = e.target.value;
+    setSearchBar(term);
+    debouncedSearch(term);
   };
 
   return (
