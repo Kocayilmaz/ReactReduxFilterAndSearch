@@ -11,7 +11,7 @@ body {
 
 .navbar {
   display: flex;
-  justify-content:  flex-end;
+  justify-content: flex-end;
   align-items: center;
   padding: 10px 20px;
   background-color: #fff;
@@ -138,7 +138,7 @@ body {
 
 @media (max-width: 1024px) {
   .big-box {
-    width: 31%; 
+    width: 31%;
   }
 }
 
@@ -149,4 +149,21 @@ body {
 
 .custom-card:hover {
   transform: scale(1.05);
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  border-radius: 50%;
+  
+  
+}
+
+.image-container img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover; 
+  border-radius: 50%;
+  box-shadow: 5px 10px 5px #878686;
 }

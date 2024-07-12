@@ -2,59 +2,68 @@ import React, { useState, useEffect } from 'react';
 import { Skeleton } from '@mantine/core';
 import { fetchCardItems } from '../util/fetchCardItems';
 import _ from 'lodash';
-import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
+import AsyncSelect from 'react-select/async';
+import axios from 'axios';
+import '../App.css';
 
 const animatedComponents = makeAnimated();
 
 export const SearchContainer = ({ head, title, desc, setFilteredData }) => {
   const [loading, setLoading] = useState(true);
-  const [options, setOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [searchBar, setSearchBar] = useState('');
 
   useEffect(() => {
-    fetchCardItems()
-      .then((res) => {
-        const tags = _.uniq(_.flatten(res.data.items.map(item => item.tags)));
-        const optionsTopping = tags.map(tag => ({ value: tag, label: tag }));
-        setOptions(optionsTopping);
-        setLoading(false);
-      })
-      .catch((err) => console.error(err.message));
+    setLoading(false);
   }, []);
 
-  const handleOptionChange = async(selectedOption) => {
-    setSelectedOption(selectedOption);
-
-    if (selectedOption) {
-      const tag = selectedOption.value;
-      fetchCardItems()
-        .then((res) => {
-          const filteredItems = res.data.items.filter((item) => item.tags.includes(tag));
-          setFilteredData(filteredItems);
-        })
-        .catch((err) => console.error(err.message));
-    } else {
-      fetchCardItems()
-        .then((res) => {
-          setFilteredData(res.data.items);
-        })
-        .catch((err) => console.error(err.message));
-    }
+  const fetchCharacterOptions = (inputValue, cb) => {
+    axios({
+      method: 'GET',
+      url: `https://rickandmortyapi.com/api/character/?name=${inputValue}`
+    }).then((res) => {
+       cb(res.data.results ?? [])
+    }).catch((err) => {
+       cb([err])
+    })
+     //return new Promise((resolve) => {
+       //setTimeout(async () => {
+        // try {
+        //   const response = await fetch(`https://rickandmortyapi.com/api/character/?name=${inputValue}`);
+        //   const data = await response.json();
+        //   resolve(
+        //     data.results.map(character => ({
+        //       value: character.id,
+        //       label: character.name,
+        //       image: character.image
+        //     }))
+        //   );
+        // } catch (error) {
+        //   console.error(error);
+        //   resolve([]);
+        // }
+       //}, 1000); 
+     //});
   };
 
-  const debouncedSearch = _.debounce(async(term) => {
+  const handleOptionChange = async (selectedOption) => {
+    debugger
+    setSelectedOption(selectedOption);
+    
+  };
+
+  const debouncedSearch = _.debounce(async (term) => {
     fetchCardItems()
       .then((res) => {
-        const filteredItems = res.data.items.filter((item) => 
+        const filteredItems = res.data.items.filter((item) =>
           item.title.toLowerCase().includes(term.toLowerCase()) ||
           item.tags.some(tag => tag.toLowerCase().includes(term.toLowerCase()))
         );
         setFilteredData(filteredItems);
       })
       .catch((err) => console.error(err.message));
-  }, 350); 
+  }, 350);
 
   const handleSearch = (e) => {
     const term = e.target.value;
@@ -76,23 +85,30 @@ export const SearchContainer = ({ head, title, desc, setFilteredData }) => {
         <>
           <h1 className="greeting">{head}</h1>
           <div className="search-container">
-            <Select
+            <AsyncSelect
               className="filter"
               components={animatedComponents}
-              options={options}
-              value={selectedOption}
+              cacheOptions
+              defaultOptions
+              getOptionValue={ (opt) => opt.id}
+              getOptionLabel={ (opt) => opt.name}
+              loadOptions={fetchCharacterOptions}
               onChange={handleOptionChange}
               placeholder={title}
               isClearable
             />
-            <input 
-              type="text" 
-              placeholder={desc} 
-              className="search-input" 
-              value={searchBar} 
-              onChange={handleSearch} 
+            <input
+              type="text"
+              placeholder={desc}
+              className="search-input"
+              value={searchBar}
+              onChange={handleSearch}
             />
           </div>
+          
+            {!!selectedOption && <div className="image-container">
+              <img alt={selectedOption.name} src={selectedOption.image} />
+            </div>}
         </>
       )}
     </>

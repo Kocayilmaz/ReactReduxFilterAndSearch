@@ -30,9 +30,9 @@ export const BoxContainer = ({ filteredData }) => {
             { maxWidth: 768, cols: 1 },
           ]}
         >
-          {cardData.map((card) => (
+          {cardData.map((card, index) => (
             <CustomCard
-              key={card.title}
+              key={index}
               title={card.title}
               desc={card.desc}
               imageLink={card.image}
