@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Skeleton } from '@mantine/core';
 import { fetchCardItems } from '../util/fetchCardItems';
 import _ from 'lodash';
@@ -6,6 +6,7 @@ import makeAnimated from 'react-select/animated';
 import AsyncSelect from 'react-select/async';
 import axios from 'axios';
 import '../App.css';
+import { filterItems } from '../util/filterItems';
 
 const animatedComponents = makeAnimated();
 
@@ -27,24 +28,7 @@ export const SearchContainer = ({ head, title, desc, setFilteredData }) => {
     }).catch((err) => {
        cb([err])
     })
-     //return new Promise((resolve) => {
-       //setTimeout(async () => {
-        // try {
-        //   const response = await fetch(`https://rickandmortyapi.com/api/character/?name=${inputValue}`);
-        //   const data = await response.json();
-        //   resolve(
-        //     data.results.map(character => ({
-        //       value: character.id,
-        //       label: character.name,
-        //       image: character.image
-        //     }))
-        //   );
-        // } catch (error) {
-        //   console.error(error);
-        //   resolve([]);
-        // }
-       //}, 1000); 
-     //});
+    
   };
 
   const handleOptionChange = async (selectedOption) => {
@@ -53,17 +37,14 @@ export const SearchContainer = ({ head, title, desc, setFilteredData }) => {
     
   };
 
-  const debouncedSearch = _.debounce(async (term) => {
-    fetchCardItems()
-      .then((res) => {
-        const filteredItems = res.data.items.filter((item) =>
-          item.title.toLowerCase().includes(term.toLowerCase()) ||
-          item.tags.some(tag => tag.toLowerCase().includes(term.toLowerCase()))
-        );
+  const debouncedSearch = useCallback(
+    _.debounce((term) => {
+      filterItems(term, (filteredItems) => {
         setFilteredData(filteredItems);
-      })
-      .catch((err) => console.error(err.message));
-  }, 350);
+      });
+    }, ),
+    []
+  );
 
   const handleSearch = (e) => {
     const term = e.target.value;
