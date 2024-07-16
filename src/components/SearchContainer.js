@@ -1,19 +1,18 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Skeleton } from '@mantine/core';
-import { fetchCardItems } from '../util/fetchCardItems';
-import _ from 'lodash';
-import makeAnimated from 'react-select/animated';
-import AsyncSelect from 'react-select/async';
-import axios from 'axios';
-import '../App.css';
-import { filterItems } from '../util/filterItems';
+import React, { useState, useEffect, useCallback } from "react";
+import { Skeleton } from "@mantine/core";
+import _ from "lodash";
+import makeAnimated from "react-select/animated";
+import AsyncSelect from "react-select/async";
+import axios from "axios";
+import "../App.css";
+import { filterItems } from "../util/filterItems";
 
 const animatedComponents = makeAnimated();
 
 export const SearchContainer = ({ head, title, desc, setFilteredData }) => {
   const [loading, setLoading] = useState(true);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [searchBar, setSearchBar] = useState('');
+  const [searchBar, setSearchBar] = useState("");
 
   useEffect(() => {
     setLoading(false);
@@ -21,20 +20,19 @@ export const SearchContainer = ({ head, title, desc, setFilteredData }) => {
 
   const fetchCharacterOptions = (inputValue, cb) => {
     axios({
-      method: 'GET',
-      url: `https://rickandmortyapi.com/api/character/?name=${inputValue}`
-    }).then((res) => {
-       cb(res.data.results ?? [])
-    }).catch((err) => {
-       cb([err])
+      method: "GET",
+      url: `https://rickandmortyapi.com/api/character/?name=${inputValue}`,
     })
-    
+      .then((res) => {
+        cb(res.data.results ?? []);
+      })
+      .catch((err) => {
+        cb([err]);
+      });
   };
 
   const handleOptionChange = async (selectedOption) => {
-    debugger
     setSelectedOption(selectedOption);
-    
   };
 
   const debouncedSearch = useCallback(
@@ -42,7 +40,7 @@ export const SearchContainer = ({ head, title, desc, setFilteredData }) => {
       filterItems(term, (filteredItems) => {
         setFilteredData(filteredItems);
       });
-    }, ),
+    }, 1500),
     []
   );
 
@@ -71,8 +69,8 @@ export const SearchContainer = ({ head, title, desc, setFilteredData }) => {
               components={animatedComponents}
               cacheOptions
               defaultOptions
-              getOptionValue={ (opt) => opt.id}
-              getOptionLabel={ (opt) => opt.name}
+              getOptionValue={(opt) => opt.id}
+              getOptionLabel={(opt) => opt.name}
               loadOptions={fetchCharacterOptions}
               onChange={handleOptionChange}
               placeholder={title}
@@ -86,10 +84,12 @@ export const SearchContainer = ({ head, title, desc, setFilteredData }) => {
               onChange={handleSearch}
             />
           </div>
-          
-            {!!selectedOption && <div className="image-container">
+
+          {!!selectedOption && (
+            <div className="image-container">
               <img alt={selectedOption.name} src={selectedOption.image} />
-            </div>}
+            </div>
+          )}
         </>
       )}
     </>

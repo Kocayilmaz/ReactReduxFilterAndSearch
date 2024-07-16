@@ -1,26 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { fetchCardItems } from '../util/fetchCardItems';
-import { CustomCard } from './CustomCard';
-import { SimpleGrid } from '@mantine/core';
+import React from "react";
+import { CustomCard } from "./CustomCard";
+import { SimpleGrid } from "@mantine/core";
 
 export const BoxContainer = ({ filteredData }) => {
-  const [cardData, setCardData] = useState([]);
-
-  useEffect(() => {
-    if (!filteredData.length) {
-      fetchCardItems()
-        .then((res) => {
-          setCardData(res.data.items);
-        })
-        .catch((err) => console.error(err.message));
-    } else {
-      setCardData(filteredData);
-    }
-  }, [filteredData]);
-
   return (
     <div className="big-box-container">
-      {cardData.length > 0 && (
+      {filteredData.length > 0 && (
         <SimpleGrid
           cols={4}
           spacing="lg"
@@ -30,7 +15,7 @@ export const BoxContainer = ({ filteredData }) => {
             { maxWidth: 768, cols: 1 },
           ]}
         >
-          {cardData.map((card, index) => (
+          {filteredData.map((card, index) => (
             <CustomCard
               key={index}
               title={card.title}

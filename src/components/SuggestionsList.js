@@ -1,40 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Skeleton, Button } from '@mantine/core';
-import { Suggestions } from './Suggestions';
-import { fetchCardItems } from '../util/fetchCardItems';
-import _ from 'lodash';
+import React, { useState, useEffect } from "react";
+import { Skeleton, Button } from "@mantine/core";
+import { Suggestions } from "./Suggestions";
+import _ from "lodash";
 
-export const SuggestionsList = ({ head, setFilteredData }) => {
+export const SuggestionsList = ({ head, cardData, setFilteredData }) => {
   const [loading, setLoading] = useState(true);
   const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
-    fetchCardItems()
-      .then((res) => {
-        const tags = _.uniq(_.flatten(res.data.items.map(item => item.tags)));
-        setSuggestions(tags);
-        setLoading(false);
-      })
-      .catch((err) => console.error(err.message));
-  }, []);
+    const tags = _.uniq(_.flatten(cardData.map((item) => item.tags)));
+    setSuggestions(tags);
+    setLoading(false);
+  }, [cardData]);
 
   const handleSuggestionClick = (tag) => {
-    fetchCardItems()
-      .then((res) => {
-        const filteredItems = res.data.items.filter((item) => {
-          return item.tags.includes(tag); // Sadece tıklanan etikete sahip öğeleri filtrele
-        });
-        setFilteredData(filteredItems);
-      })
-      .catch((err) => console.error(err.message));
+    const filteredItems = cardData.filter((item) => item.tags.includes(tag));
+    setFilteredData(filteredItems);
   };
 
   const handleAllClick = () => {
-    fetchCardItems()
-      .then((res) => {
-        setFilteredData(res.data.items); // Tüm öğeleri getirir
-      })
-      .catch((err) => console.error(err.message));
+    setFilteredData(cardData);
   };
 
   return (
@@ -54,11 +39,19 @@ export const SuggestionsList = ({ head, setFilteredData }) => {
           <h2>{head}</h2>
           <div className="suggestions-list">
             {suggestions.map((tag) => (
-              <Suggestions key={tag} title={tag} onClick={() => handleSuggestionClick(tag)} />
+              <Suggestions
+                key={tag}
+                title={tag}
+                onClick={() => handleSuggestionClick(tag)}
+              />
             ))}
             <Button
               variant="gradient"
-              gradient={{ from: 'rgba(0, 63, 145, 0.77)', to: 'rgba(120, 218, 240, 0.81)', deg: 237 }}
+              gradient={{
+                from: "rgba(0, 63, 145, 0.77)",
+                to: "rgba(120, 218, 240, 0.81)",
+                deg: 237,
+              }}
               onClick={handleAllClick}
             >
               All
