@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import { Skeleton } from "@mantine/core";
 import _ from "lodash";
 import makeAnimated from "react-select/animated";
@@ -6,17 +6,24 @@ import AsyncSelect from "react-select/async";
 import axios from "axios";
 import "../App.css";
 import { filterItems } from "../util/filterItems";
+import { Context } from "./MainContainer";
 
 const animatedComponents = makeAnimated();
 
-export const SearchContainer = ({ head, title, desc, setFilteredData }) => {
-  const [loading, setLoading] = useState(true);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [searchBar, setSearchBar] = useState("");
+export const SearchContainer = ({ head, title, desc }) => {
+  const {
+    setFilteredData,
+    loading,
+    setLoading,
+    selectedOption,
+    setSelectedOption,
+    searchBar,
+    setSearchBar,
+  } = useContext(Context);
 
   useEffect(() => {
     setLoading(false);
-  }, []);
+  }, [setLoading]);
 
   const fetchCharacterOptions = (inputValue, cb) => {
     axios({

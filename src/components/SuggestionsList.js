@@ -5,15 +5,22 @@ import _ from "lodash";
 import { Context } from "./MainContainer";
 
 export const SuggestionsList = ({ head }) => {
-  const { cardData, setFilteredData } = useContext(Context);
-  const [loading, setLoading] = useState(true);
-  const [suggestions, setSuggestions] = useState([]);
+  const {
+    cardData,
+    setFilteredData,
+    loading,
+    setLoading,
+    suggestions,
+    setSuggestions,
+  } = useContext(Context);
 
   useEffect(() => {
-    const tags = _.uniq(_.flatten(cardData.map((item) => item.tags)));
-    setSuggestions(tags);
-    setLoading(false);
-  }, [cardData]);
+    if (cardData.length > 0) {
+      const tags = _.uniq(_.flatten(cardData.map((item) => item.tags)));
+      setSuggestions(tags);
+      setLoading(false);
+    }
+  }, [cardData, setLoading]);
 
   const handleSuggestionClick = (tag) => {
     const filteredItems = cardData.filter((item) => item.tags.includes(tag));
