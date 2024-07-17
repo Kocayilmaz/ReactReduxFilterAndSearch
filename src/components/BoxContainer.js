@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CustomCard } from "./CustomCard";
 import { SimpleGrid } from "@mantine/core";
+import { Context } from "./MainContainer";
 
-export const BoxContainer = ({ filteredData }) => {
+export const BoxContainer = () => {
+  const { filteredData } = useContext(Context);
+
   return (
     <div className="big-box-container">
       {filteredData.length > 0 && (

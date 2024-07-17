@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Skeleton, Button } from "@mantine/core";
 import { Suggestions } from "./Suggestions";
 import _ from "lodash";
+import { Context } from "./MainContainer";
 
-export const SuggestionsList = ({ head, cardData, setFilteredData }) => {
+export const SuggestionsList = ({ head }) => {
+  const { cardData, setFilteredData } = useContext(Context);
   const [loading, setLoading] = useState(true);
   const [suggestions, setSuggestions] = useState([]);
 

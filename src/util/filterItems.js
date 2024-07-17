@@ -1,4 +1,3 @@
-// src/util/filterItems.js
 import { fetchCardItems } from "./fetchCardItems";
 
 export const filterItems = (term, cb) => {
