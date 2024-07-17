@@ -12,8 +12,8 @@ export const MainContainer = () => {
   useEffect(() => {
     fetchCardItems()
       .then((res) => {
-        setCardData(res.data.items);
-        setFilteredData(res.data.items);
+        setCardData(res.data);
+        setFilteredData(res.data);
       })
       .catch((err) => console.error(err.message));
   }, []);

@@ -1,10 +1,10 @@
 // src/util/filterItems.js
-import { fetchCardItems } from './fetchCardItems';
+import { fetchCardItems } from "./fetchCardItems";
 
 export const filterItems = (term, cb) => {
   fetchCardItems()
     .then((res) => {
-      const filteredItems = res.data.items.filter(
+      const filteredItems = res.data.filter(
         (item) =>
           item.title.toLowerCase().includes(term.toLowerCase()) ||
           item.tags.some((tag) =>
@@ -14,6 +14,7 @@ export const filterItems = (term, cb) => {
       cb(filteredItems);
     })
     .catch((err) => {
+      debugger;
       console.error(err.message);
       cb([]);
     });
