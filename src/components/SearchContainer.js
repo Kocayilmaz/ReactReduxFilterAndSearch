@@ -4,7 +4,7 @@ import _ from "lodash";
 import makeAnimated from "react-select/animated";
 import AsyncSelect from "react-select/async";
 import axios from "axios";
-import "../App.css";
+import "../App.scss";
 import { filterItems } from "../util/filterItems";
 import { Context } from "./MainContainer";
 

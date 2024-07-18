@@ -1,7 +1,8 @@
-import React from 'react';
-import './App.css';
-import { MainContainer } from './components/MainContainer';
-import { MantineProvider } from '@mantine/core';
+import React from "react";
+import "./App.scss";
+import { MainContainer } from "./components/MainContainer";
+import { MantineProvider } from "@mantine/core";
+// import "./src/components/CustomCard.scss";
 
 function App() {
   return (
