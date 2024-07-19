@@ -1,13 +1,23 @@
 import React from "react";
-import "./App.scss";
 import { MainContainer } from "./components/MainContainer";
 import { MantineProvider } from "@mantine/core";
-// import "./src/components/CustomCard.scss";
+import Video from "./assets/Background1.mp4";
+import "./App.scss";
 
 function App() {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
-      <MainContainer />
+      <div className="container">
+        <video
+          className="video-background"
+          autoPlay
+          muted
+          loop
+          src={Video}
+          type="video/mp4"
+        ></video>
+        <MainContainer />
+      </div>
     </MantineProvider>
   );
 }

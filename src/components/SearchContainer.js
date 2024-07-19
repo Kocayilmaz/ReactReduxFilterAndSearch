@@ -68,7 +68,7 @@ export const SearchContainer = ({ head, title, desc }) => {
           </div>
         </>
       ) : (
-        <>
+        <div className="content">
           <h1 className="greeting">{head}</h1>
           <div className="search-container">
             <AsyncSelect
@@ -97,7 +97,7 @@ export const SearchContainer = ({ head, title, desc }) => {
               <img alt={selectedOption.name} src={selectedOption.image} />
             </div>
           )}
-        </>
+        </div>
       )}
     </>
   );
