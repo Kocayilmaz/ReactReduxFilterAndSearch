@@ -19,6 +19,7 @@ export const SearchContainer = ({ head, title, desc }) => {
     setSelectedOption,
     searchBar,
     setSearchBar,
+    setSelectedImage,
   } = useContext(Context);
 
   useEffect(() => {

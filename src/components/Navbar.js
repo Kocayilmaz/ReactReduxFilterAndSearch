@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Drawer } from "@mantine/core";
-import profileImg from "../İmages/Profileİmg.jpeg";
 import logo from "../assets/logo192.png";
+import { Context } from "./MainContainer";
+import defaultProfileImg from "../İmages/images.jpg";
 
 export const Navbar = () => {
   const [opened, setOpened] = useState(false);
+  const { selectedOption } = useContext(Context);
 
   return (
     <div className="navbar">
@@ -13,12 +15,10 @@ export const Navbar = () => {
         <span className="title">R🎏DA1</span>
       </div>
 
-      <div className="navbar-title">𝐑𝐞𝐚𝐜𝐭 𝐅𝐢𝐠𝐦𝐚 𝐃𝐞𝐬𝐢𝐧𝐠 𝐀𝐭𝐭𝐞𝐦𝐩𝐭 1</div>
-
       <ul>
         <li>
           <img
-            src={profileImg}
+            src={selectedOption ? selectedOption.image : defaultProfileImg}
             alt="Profile"
             className="profile-image"
             onClick={() => setOpened(true)}

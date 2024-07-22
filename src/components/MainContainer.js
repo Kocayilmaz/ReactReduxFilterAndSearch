@@ -49,8 +49,8 @@ const ContextProvider = (props) => {
 export const MainContainer = () => {
   return (
     <div className="container">
-      <Navbar title={"RF"} />
       <ContextProvider>
+        <Navbar title={"RF"} />
         <SearchContainer
           head={"Hello, May I Help You?"}
           title={"Pick Your Character"}
