@@ -7,10 +7,13 @@ import axios from "axios";
 import "../App.scss";
 import { filterItems } from "../util/filterItems";
 import { Context } from "./MainContainer";
+import { useSelector } from "react-redux";
 
 const animatedComponents = makeAnimated();
 
 export const SearchContainer = ({ head, title, desc }) => {
+  const cardData = useSelector((store) => store.cardData);
+
   const {
     setFilteredData,
     loading,
@@ -72,6 +75,10 @@ export const SearchContainer = ({ head, title, desc }) => {
         <div className="content">
           <h1 className="greeting">{head}</h1>
           <div className="search-container">
+            {cardData.map((i) => (
+              <span>{i}</span>
+            ))}
+
             <AsyncSelect
               className="filter"
               components={animatedComponents}

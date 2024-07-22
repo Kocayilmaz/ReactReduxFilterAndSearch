@@ -4,6 +4,9 @@ import { SearchContainer } from "./SearchContainer";
 import { SuggestionsList } from "./SuggestionsList";
 import { BoxContainer } from "./BoxContainer";
 import { fetchCardItems } from "../util/fetchCardItems";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { cardDataAction } from "../redux/reducers/CardDataReducer";
 
 export const Context = createContext();
 
