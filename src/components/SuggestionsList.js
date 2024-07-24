@@ -3,16 +3,12 @@ import { Skeleton, Button } from "@mantine/core";
 import { Suggestions } from "./Suggestions";
 import _ from "lodash";
 import { Context } from "./MainContainer";
+import { useSelector } from "react-redux";
 
 export const SuggestionsList = ({ head }) => {
-  const {
-    cardData,
-    setFilteredData,
-    loading,
-    setLoading,
-    suggestions,
-    setSuggestions,
-  } = useContext(Context);
+  const cardData = useSelector((store) => store.cardData);
+  const { setFilteredData, loading, setLoading, suggestions, setSuggestions } =
+    useContext(Context);
 
   useEffect(() => {
     if (cardData.length > 0) {

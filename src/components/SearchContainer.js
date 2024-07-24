@@ -13,7 +13,6 @@ const animatedComponents = makeAnimated();
 
 export const SearchContainer = ({ head, title, desc }) => {
   const cardData = useSelector((store) => store.cardData);
-
   const {
     setFilteredData,
     loading,
@@ -22,7 +21,6 @@ export const SearchContainer = ({ head, title, desc }) => {
     setSelectedOption,
     searchBar,
     setSearchBar,
-    setSelectedImage,
   } = useContext(Context);
 
   useEffect(() => {
@@ -48,8 +46,8 @@ export const SearchContainer = ({ head, title, desc }) => {
 
   const debouncedSearch = useCallback(
     _.debounce((term) => {
-      filterItems(term, (filteredItems) => {
-        setFilteredData(filteredItems);
+      filterItems(term, (cardData) => {
+        setFilteredData(cardData);
       });
     }, 1500),
     []
@@ -75,10 +73,6 @@ export const SearchContainer = ({ head, title, desc }) => {
         <div className="content">
           <h1 className="greeting">{head}</h1>
           <div className="search-container">
-            {cardData.map((i) => (
-              <span>{i}</span>
-            ))}
-
             <AsyncSelect
               className="filter"
               components={animatedComponents}

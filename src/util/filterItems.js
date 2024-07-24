@@ -13,7 +13,6 @@ export const filterItems = (term, cb) => {
       cb(filteredItems);
     })
     .catch((err) => {
-      debugger;
       console.error(err.message);
       cb([]);
     });

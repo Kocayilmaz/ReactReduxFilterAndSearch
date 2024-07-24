@@ -3,29 +3,28 @@ import { Navbar } from "./Navbar";
 import { SearchContainer } from "./SearchContainer";
 import { SuggestionsList } from "./SuggestionsList";
 import { BoxContainer } from "./BoxContainer";
-import { fetchCardItems } from "../util/fetchCardItems";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { cardDataAction } from "../redux/reducers/CardDataReducer";
+import { fetchAndFilterData } from "../redux/reducers/cardDataReducer";
 
 export const Context = createContext();
 
 const ContextProvider = (props) => {
+  const dispatch = useDispatch();
   const [filteredData, setFilteredData] = useState([]);
-  const [cardData, setCardData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [suggestions, setSuggestions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [searchBar, setSearchBar] = useState("");
 
   useEffect(() => {
-    fetchCardItems()
+    /* fetchCardItems()
       .then((res) => {
         setCardData(res.data);
         setFilteredData(res.data);
         setLoading(false);
       })
-      .catch((err) => console.error(err.message));
+      .catch((err) => console.error(err.message)); */
+    dispatch(fetchAndFilterData());
   }, []);
 
   return (
@@ -33,7 +32,6 @@ const ContextProvider = (props) => {
       value={{
         filteredData,
         setFilteredData,
-        cardData,
         loading,
         setLoading,
         suggestions,

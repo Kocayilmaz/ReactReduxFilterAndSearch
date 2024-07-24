@@ -2,13 +2,15 @@ import React, { useContext } from "react";
 import { CustomCard } from "./CustomCard";
 import { SimpleGrid } from "@mantine/core";
 import { Context } from "./MainContainer";
+import { useSelector } from "react-redux";
 
 export const BoxContainer = () => {
+  const cardData = useSelector((store) => store.cardData);
   const { filteredData } = useContext(Context);
 
   return (
     <div className="big-box-container">
-      {filteredData.length > 0 && (
+      {cardData.length > 0 && (
         <SimpleGrid
           cols={4}
           spacing="lg"
@@ -18,7 +20,7 @@ export const BoxContainer = () => {
             { maxWidth: 768, cols: 1 },
           ]}
         >
-          {filteredData.map((card, index) => (
+          {cardData.map((card, index) => (
             <CustomCard
               key={index}
               title={card.title}
