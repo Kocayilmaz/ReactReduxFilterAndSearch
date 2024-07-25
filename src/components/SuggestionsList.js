@@ -12,12 +12,14 @@ export const SuggestionsList = ({ head }) => {
   const dispatch = useDispatch();
   const cardData = useSelector((store) => store.cardData);
 
-  const { loading, setLoading, suggestions } = useContext(Context);
+  const { loading, setLoading, suggestions, setSuggestions } =
+    useContext(Context);
 
   useEffect(() => {
     if (cardData.length > 0) {
       const tags = _.uniq(_.flatten(cardData.map((item) => item.tags)));
-      dispatch(fetchAndFilterData(tags));
+      /*  dispatch(cardDataAction(tags)); */
+      setSuggestions(tags);
       setLoading(false);
     }
     dispatch(cardDataAction(cardData));

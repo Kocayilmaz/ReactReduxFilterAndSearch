@@ -10,28 +10,18 @@ export const Context = createContext();
 
 const ContextProvider = (props) => {
   const dispatch = useDispatch();
-  const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [suggestions, setSuggestions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [searchBar, setSearchBar] = useState("");
 
   useEffect(() => {
-    /* fetchCardItems()
-      .then((res) => {
-        setCardData(res.data);
-        setFilteredData(res.data);
-        setLoading(false);
-      })
-      .catch((err) => console.error(err.message)); */
     dispatch(fetchAndFilterData());
   }, []);
 
   return (
     <Context.Provider
       value={{
-        filteredData,
-        setFilteredData,
         loading,
         setLoading,
         suggestions,

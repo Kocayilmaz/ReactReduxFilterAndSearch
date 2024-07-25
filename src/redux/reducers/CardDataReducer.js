@@ -16,7 +16,6 @@ export function cardDataAction(data, tag = null) {
 export function cardDataReducer(state = [], { type, payload }) {
   switch (type) {
     case CARD_DATA:
-      console.log(payload.tag);
       if (payload.tag) {
         return payload.cardData.filter((item) =>
           item.tags.includes(payload.tag)
