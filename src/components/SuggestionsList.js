@@ -4,9 +4,18 @@ import { Suggestions } from "./Suggestions";
 import _ from "lodash";
 import { Context } from "./MainContainer";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { filterTagData } from "../redux/reducers/TagDataReducer";
+import { tagDataReducer } from "../redux/reducers/TagDataReducer";
+import { fetchAndFilterData } from "../redux/reducers/CardDataReducer";
+import { cardDataAction } from "../redux/reducers/CardDataReducer";
+import { tagDataAction } from "../redux/reducers/TagDataReducer";
 
 export const SuggestionsList = ({ head }) => {
+  const dispatch = useDispatch();
   const cardData = useSelector((store) => store.cardData);
+  const tagData = useSelector((store) => store.tagData);
+
   const { setFilteredData, loading, setLoading, suggestions, setSuggestions } =
     useContext(Context);
 
@@ -16,11 +25,11 @@ export const SuggestionsList = ({ head }) => {
       setSuggestions(tags);
       setLoading(false);
     }
-  }, [cardData, setLoading]);
+    dispatch(cardDataAction(cardData));
+  }, [cardData, setLoading, dispatch]);
 
   const handleSuggestionClick = (tag) => {
-    const filteredItems = cardData.filter((item) => item.tags.includes(tag));
-    setFilteredData(filteredItems);
+    dispatch(tagDataAction(cardData, tag));
   };
 
   const handleAllClick = () => {

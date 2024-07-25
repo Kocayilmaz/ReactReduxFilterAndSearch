@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
 import { CustomCard } from "./CustomCard";
 import { SimpleGrid } from "@mantine/core";
-import { Context } from "./MainContainer";
 import { useSelector } from "react-redux";
 
 export const BoxContainer = () => {
   const cardData = useSelector((store) => store.cardData);
-  const { filteredData } = useContext(Context);
 
   return (
     <div className="big-box-container">
