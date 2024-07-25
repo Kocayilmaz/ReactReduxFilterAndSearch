@@ -3,11 +3,12 @@ import { fetchCardItems } from "../../util/fetchCardItems";
 const CARD_DATA = "DEMO/CARD_DATA";
 const FETCH_AND_FILTER_DATA = "FETCH_AND_FILTER_DATA";
 
-export function cardDataAction(data) {
+export function cardDataAction(data, tag = null) {
   return {
     type: CARD_DATA,
     payload: {
       cardData: data,
+      tag: tag,
     },
   };
 }
@@ -15,6 +16,12 @@ export function cardDataAction(data) {
 export function cardDataReducer(state = [], { type, payload }) {
   switch (type) {
     case CARD_DATA:
+      console.log(payload.tag);
+      if (payload.tag) {
+        return payload.cardData.filter((item) =>
+          item.tags.includes(payload.tag)
+        );
+      }
       return payload.cardData;
     case FETCH_AND_FILTER_DATA:
       return payload.cardData;
