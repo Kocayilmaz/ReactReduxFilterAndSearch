@@ -5,16 +5,16 @@ import makeAnimated from "react-select/animated";
 import AsyncSelect from "react-select/async";
 import axios from "axios";
 import "../App.scss";
-import { filterItems } from "../util/filterItems";
 import { Context } from "./MainContainer";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchAndFilterData } from "../redux/reducers/CardDataReducer";
 
 const animatedComponents = makeAnimated();
 
 export const SearchContainer = ({ head, title, desc }) => {
+  const dispatch = useDispatch();
   const cardData = useSelector((store) => store.cardData);
   const {
-    setFilteredData,
     loading,
     setLoading,
     selectedOption,
@@ -46,11 +46,8 @@ export const SearchContainer = ({ head, title, desc }) => {
 
   const debouncedSearch = useCallback(
     _.debounce((term) => {
-      filterItems(term, (cardData) => {
-        setFilteredData(cardData);
-      });
-    }, 1500),
-    []
+      dispatch(fetchAndFilterData(term, cardData));
+    }, 1500)
   );
 
   const handleSearch = (e) => {
