@@ -1,12 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Drawer } from "@mantine/core";
 import logo from "../assets/logo192.png";
-import { Context } from "./MainContainer";
 import defaultProfileImg from "../İmages/images.jpg";
+import { useSelector } from "react-redux";
 
 export const Navbar = () => {
   const [opened, setOpened] = useState(false);
-  const { selectedOption } = useContext(Context);
+  const selectedOption = useSelector((store) => store.selectedOption);
 
   return (
     <div className="navbar">

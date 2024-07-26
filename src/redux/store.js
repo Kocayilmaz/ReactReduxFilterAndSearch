@@ -6,8 +6,10 @@ import reducers from "./reducers/index";
 
 const initialState = {
   cardData: [],
-  filteredData: [],
-  tagData: [],
+  searchBar: "",
+  selectedOption: null,
+  loading: false,
+  suggestions: [],
 };
 
 console.log(reducers);

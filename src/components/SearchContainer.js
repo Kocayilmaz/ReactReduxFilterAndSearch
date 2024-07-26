@@ -5,27 +5,27 @@ import makeAnimated from "react-select/animated";
 import AsyncSelect from "react-select/async";
 import axios from "axios";
 import "../App.scss";
-import { Context } from "./MainContainer";
+/* import { Context } from "./MainContainer"; */
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAndFilterData } from "../redux/reducers/CardDataReducer";
+import { setSearchBarAction } from "../redux/reducers/searchBarReducer";
+import { setSelectedOptionAction } from "../redux/reducers/selectedOptionReducer";
+import { setLoadingAction } from "../redux/reducers/loadingReducer";
 
 const animatedComponents = makeAnimated();
 
 export const SearchContainer = ({ head, title, desc }) => {
   const dispatch = useDispatch();
   const cardData = useSelector((store) => store.cardData);
-  const {
-    loading,
-    setLoading,
-    selectedOption,
-    setSelectedOption,
-    searchBar,
-    setSearchBar,
-  } = useContext(Context);
+  const searchBar = useSelector((store) => store.searchBar);
+  const selectedOption = useSelector((store) => store.selectedOption);
+  const loading = useSelector((store) => store.loading);
+  /* const { loading, setLoading } = useContext(Context); */
 
   useEffect(() => {
-    setLoading(false);
-  }, [setLoading]);
+    dispatch(setLoadingAction(false));
+    /* setLoading(false); */
+  }, [/* setLoading  */ dispatch]);
 
   const fetchCharacterOptions = (inputValue, cb) => {
     axios({
@@ -41,7 +41,7 @@ export const SearchContainer = ({ head, title, desc }) => {
   };
 
   const handleOptionChange = async (selectedOption) => {
-    setSelectedOption(selectedOption);
+    dispatch(setSelectedOptionAction(selectedOption));
   };
 
   const debouncedSearch = useCallback(
@@ -52,7 +52,7 @@ export const SearchContainer = ({ head, title, desc }) => {
 
   const handleSearch = (e) => {
     const term = e.target.value;
-    setSearchBar(term);
+    dispatch(setSearchBarAction(term));
     debouncedSearch(term);
   };
 

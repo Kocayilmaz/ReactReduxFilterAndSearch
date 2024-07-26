@@ -1,29 +1,29 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Skeleton, Button } from "@mantine/core";
 import { Suggestions } from "./Suggestions";
 import _ from "lodash";
-import { Context } from "./MainContainer";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchAndFilterData } from "../redux/reducers/CardDataReducer";
 import { cardDataAction } from "../redux/reducers/CardDataReducer";
+import { setLoadingAction } from "../redux/reducers/loadingReducer";
+import { FetchAndAllTagData } from "../redux/reducers/CardDataReducer";
 
 export const SuggestionsList = ({ head }) => {
   const dispatch = useDispatch();
   const cardData = useSelector((store) => store.cardData);
-
-  const { loading, setLoading, suggestions, setSuggestions } =
-    useContext(Context);
+  const loading = useSelector((store) => store.loading);
+  const suggestions = useSelector((store) => store.suggestions);
 
   useEffect(() => {
     if (cardData.length > 0) {
       const tags = _.uniq(_.flatten(cardData.map((item) => item.tags)));
-      /*  dispatch(cardDataAction(tags)); */
-      setSuggestions(tags);
-      setLoading(false);
+
+      dispatch(FetchAndAllTagData(tags));
+      dispatch(setLoadingAction(false));
     }
     dispatch(cardDataAction(cardData));
-  }, [cardData, setLoading, dispatch]);
+  }, [cardData, dispatch]);
 
   const handleSuggestionClick = (tag) => {
     dispatch(cardDataAction(cardData, tag));
