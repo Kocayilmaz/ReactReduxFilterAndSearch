@@ -11,6 +11,11 @@ This project is a web application built with React and Mantine. The application 
 - 🔄 **State Management with Redux:** Application state management using Redux.
 - 📱 **Responsive Design:** Responsive design suitable for different screen sizes.
 
+
+https://github.com/user-attachments/assets/5a5a82ee-76ae-40b1-b84b-df66e18cdb2f
+
+
+
 ## Technologies Used
 
 - ⚛️ **React:** Used for building the user interface.
