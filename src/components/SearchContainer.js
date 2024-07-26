@@ -1,29 +1,31 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, { useEffect, useCallback } from "react";
 import { Skeleton } from "@mantine/core";
 import _ from "lodash";
 import makeAnimated from "react-select/animated";
 import AsyncSelect from "react-select/async";
 import axios from "axios";
-import "../App.css";
-import { filterItems } from "../util/filterItems";
-import { Context } from "./MainContainer";
+import "../App.scss";
+/* import { Context } from "./MainContainer"; */
+import { useSelector, useDispatch } from "react-redux";
+import { fetchAndFilterData } from "../redux/reducers/CardDataReducer";
+import { setSearchBarAction } from "../redux/reducers/searchBarReducer";
+import { setSelectedOptionAction } from "../redux/reducers/selectedOptionReducer";
+import { setLoadingAction } from "../redux/reducers/loadingReducer";
 
 const animatedComponents = makeAnimated();
 
 export const SearchContainer = ({ head, title, desc }) => {
-  const {
-    setFilteredData,
-    loading,
-    setLoading,
-    selectedOption,
-    setSelectedOption,
-    searchBar,
-    setSearchBar,
-  } = useContext(Context);
+  const dispatch = useDispatch();
+  const cardData = useSelector((store) => store.cardData);
+  const searchBar = useSelector((store) => store.searchBar);
+  const selectedOption = useSelector((store) => store.selectedOption);
+  const loading = useSelector((store) => store.loading);
+  /* const { loading, setLoading } = useContext(Context); */
 
   useEffect(() => {
-    setLoading(false);
-  }, [setLoading]);
+    dispatch(setLoadingAction(false));
+    /* setLoading(false); */
+  }, [/* setLoading  */ dispatch]);
 
   const fetchCharacterOptions = (inputValue, cb) => {
     axios({
@@ -39,21 +41,18 @@ export const SearchContainer = ({ head, title, desc }) => {
   };
 
   const handleOptionChange = async (selectedOption) => {
-    setSelectedOption(selectedOption);
+    dispatch(setSelectedOptionAction(selectedOption));
   };
 
   const debouncedSearch = useCallback(
     _.debounce((term) => {
-      filterItems(term, (filteredItems) => {
-        setFilteredData(filteredItems);
-      });
-    }, 1500),
-    []
+      dispatch(fetchAndFilterData(term, cardData));
+    }, 1500)
   );
 
   const handleSearch = (e) => {
     const term = e.target.value;
-    setSearchBar(term);
+    dispatch(setSearchBarAction(term));
     debouncedSearch(term);
   };
 
@@ -68,7 +67,7 @@ export const SearchContainer = ({ head, title, desc }) => {
           </div>
         </>
       ) : (
-        <>
+        <div className="content">
           <h1 className="greeting">{head}</h1>
           <div className="search-container">
             <AsyncSelect
@@ -97,7 +96,7 @@ export const SearchContainer = ({ head, title, desc }) => {
               <img alt={selectedOption.name} src={selectedOption.image} />
             </div>
           )}
-        </>
+        </div>
       )}
     </>
   );

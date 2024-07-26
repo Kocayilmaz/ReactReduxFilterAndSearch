@@ -1,39 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { Skeleton, Button } from '@mantine/core';
-import { CloseButton } from '@mantine/core';
+import React, { useState } from "react";
+import { Drawer } from "@mantine/core";
+import logo from "../assets/logo192.png";
+import defaultProfileImg from "../İmages/images.jpg";
+import { useSelector } from "react-redux";
 
-export const Navbar = ({ title }) => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500); 
-
-    return () => clearTimeout(timer); // Temizleme işlevi
-  }, []);
+export const Navbar = () => {
+  const [opened, setOpened] = useState(false);
+  const selectedOption = useSelector((store) => store.selectedOption);
 
   return (
-    <>
-      {loading ? (
-        <>
-          <Skeleton height={50} circle mb="xl" />
-          <Skeleton height={8} radius="xl" />
-          <Skeleton height={8} mt={6} radius="xl" />
-          <Skeleton height={8} mt={6} width="70%" radius="xl" />
-        </>
-      ) : (
-        <div className="navbar">
-          <ul>
-            <li><a href="#" className="notification"><i className="cis-bell"></i></a></li>
-            <li>
-              <Button variant="filled" color="green" size='xs'  radius="xl">{title}</Button>
-            </li>
-            <li><CloseButton size='md' />
-            </li>
-          </ul>
+    <div className="navbar">
+      <div className="logo-title">
+        <img src={logo} alt="Logo" className="logo" />
+        <span className="title">R🎏DA1</span>
+      </div>
+
+      <ul>
+        <li>
+          <img
+            src={selectedOption ? selectedOption.image : defaultProfileImg}
+            alt="Profile"
+            className="profile-image"
+            onClick={() => setOpened(true)}
+          />
+        </li>
+      </ul>
+
+      <Drawer
+        opened={opened}
+        onClose={() => setOpened(false)}
+        position="right"
+        size="md"
+      >
+        <div className="menu-content">
+          <h2>Menu</h2>
+          {/* Menü içeriği */}
         </div>
-      )}
-    </>
+      </Drawer>
+    </div>
   );
 };

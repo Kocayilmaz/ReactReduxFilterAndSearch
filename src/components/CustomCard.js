@@ -1,7 +1,6 @@
-// CustomCard.js
-import React, { useState } from 'react';
-import { Card, Image, Text, Skeleton } from '@mantine/core';
-import './CustomCard.css';
+import React, { useState } from "react";
+import { Card, Image, Text, Skeleton } from "@mantine/core";
+import "./CustomCard.scss";
 
 export const CustomCard = ({ imageLink, title, desc }) => {
   const [loaded, setLoaded] = useState(false);
@@ -14,7 +13,7 @@ export const CustomCard = ({ imageLink, title, desc }) => {
           src={imageLink}
           alt={title}
           className="card-image"
-          style={{ display: loaded ? 'block' : 'none' }}
+          style={{ display: loaded ? "block" : "none" }}
           onLoad={() => setLoaded(true)}
         />
       </Card.Section>
@@ -22,7 +21,9 @@ export const CustomCard = ({ imageLink, title, desc }) => {
       {!loaded ? (
         <Skeleton height={20} mt="md" />
       ) : (
-        <Text fw={500} className="card-title" mt="md" mb="xs">{title}</Text>
+        <Text fw={500} className="card-title" mt="md" mb="xs">
+          {title}
+        </Text>
       )}
 
       {!loaded ? (

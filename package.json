@@ -4,6 +4,12 @@
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.4",
+    "react-redux": "^7.2.8",
+    "redux": "^4.1.2",
+    "redux-actions": "^2.6.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.4.1",
     "@mantine/core": "^5.10.5",
     "@mantine/hooks": "^5.10.5",
     "@testing-library/jest-dom": "^5.17.0",
@@ -17,6 +23,7 @@
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
+    "scss": "^0.2.4",
     "select": "^1.1.2",
     "web-vitals": "^2.1.4"
   },
@@ -43,5 +50,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sass": "^1.77.8",
+    "sass-loader": "^14.2.1",
+    "webpack": "^5.93.0"
   }
 }

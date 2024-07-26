@@ -1,56 +1,30 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useEffect, createContext } from "react";
 import { Navbar } from "./Navbar";
 import { SearchContainer } from "./SearchContainer";
 import { SuggestionsList } from "./SuggestionsList";
 import { BoxContainer } from "./BoxContainer";
-import { fetchCardItems } from "../util/fetchCardItems";
+import { useDispatch } from "react-redux";
+import { fetchAndFilterData } from "../redux/reducers/CardDataReducer";
 
 export const Context = createContext();
 
 const ContextProvider = (props) => {
-  const [filteredData, setFilteredData] = useState([]);
-  const [cardData, setCardData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [suggestions, setSuggestions] = useState([]);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [searchBar, setSearchBar] = useState("");
+  const dispatch = useDispatch();
+  /*useEffect(() => {
+    dispatch(fetchAndFilterData());
+  }, []);*/
 
-  useEffect(() => {
-    fetchCardItems()
-      .then((res) => {
-        setCardData(res.data);
-        setFilteredData(res.data);
-        setLoading(false);
-      })
-      .catch((err) => console.error(err.message));
-  }, []);
-
-  return (
-    <Context.Provider
-      value={{
-        filteredData,
-        setFilteredData,
-        cardData,
-        loading,
-        setLoading,
-        suggestions,
-        setSuggestions,
-        selectedOption,
-        setSelectedOption,
-        searchBar,
-        setSearchBar,
-      }}
-    >
-      {props.children}
-    </Context.Provider>
-  );
+  return <Context.Provider value={{}}>{props.children}</Context.Provider>;
 };
 
 export const MainContainer = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchAndFilterData())
+    }, []);
   return (
     <div className="container">
-      <Navbar title={"RF"} />
-      <ContextProvider>
+        <Navbar title={"RF"} />
         <SearchContainer
           head={"Hello, May I Help You?"}
           title={"Pick Your Character"}
@@ -58,7 +32,6 @@ export const MainContainer = () => {
         />
         <SuggestionsList head={"Suggestions:"} />
         <BoxContainer />
-      </ContextProvider>
     </div>
   );
 };
