@@ -5,7 +5,7 @@ This project is a web application built with React and Mantine. The application 
 ## Features
 
 - 🔍 **Character Search:** Search for characters via the Rick and Morty API and display the selected character's image.
-- 📝 **Card View:** Character information is listed in card format.
+- 📝 **Card View:** The cards are fetched from a local JSON API. This is intended for demonstration purposes.
 - 📜 **Filtering and Suggestions:** Filter characters based on specific tags and receive suggestions.
 - 🎥 **Video Background:** A continuously playing video in the background of the page.
 - 🔄 **State Management with Redux:** Application state management using Redux.
@@ -25,3 +25,36 @@ https://github.com/user-attachments/assets/5a5a82ee-76ae-40b1-b84b-df66e18cdb2f
 - 🎨 **SCSS:** Used for styling.
 - 🔄 **Lodash:** Used for data processing and filtering.
 - 👽 **Rick and Morty API:** Used to fetch character data.
+
+
+---
+
+
+"# React Mantine Rick and Morty Project
+
+Bu proje, React ve Mantine kullanarak oluşturulmuş bir web uygulamasıdır. Uygulama, Rick and Morty API'sini kullanarak karakterleri aramanıza ve filtrelemenize olanak tanır. Ayrıca, Mantine bileşenleri ve bazı özel stiller kullanarak zarif bir kullanıcı arayüzü sağlar.
+
+## Özellikler
+
+- 🔍**Karakter Arama:** Rick and Morty API üzerinden karakter arayabilir ve seçilen karakterin resmini görüntüleyebilirsiniz.
+- 📝**Kart Görünümü:**Kartlar json local apisi üzerinden alınmaktadır. Örnek olması amaçlanmıştır.
+- 📜**Filtreleme ve Öneriler:** Belirli etiketlere göre karakterleri filtreleyebilir ve öneriler alabilirsiniz.
+- 🎥**Video Arka Plan:** Sayfanın arka planında sürekli oynayan bir video bulunmaktadır.
+- 🔄**Redux ile Durum Yönetimi:** Uygulamanın durum yönetimi Redux kullanılarak yapılmıştır.
+- 📱**Esnek ve Duyarlı Tasarım:** Farklı ekran boyutlarına uygun duyarlı bir tasarım.
+
+
+
+https://github.com/user-attachments/assets/5a5a82ee-76ae-40b1-b84b-df66e18cdb2f
+
+
+
+## Kullanılan Teknolojiler
+
+- ⚛️**React:** Kullanıcı arayüzünü oluşturmak için kullanıldı.
+- 🏛️**Mantine:** React bileşen kütüphanesi olarak kullanıldı.
+- 🗃️**Redux:** Uygulamanın durum yönetimi için kullanıldı.
+- 🌐**Axios:** API çağrılarını yönetmek için kullanıldı.
+- 🎨**SCSS:** Stil dosyaları için kullanıldı.
+- 🔄**Lodash:** Veri işleme ve filtreleme işlemleri için kullanıldı.
+- 👽**Rick and Morty API:** Karakter verilerini almak için kullanıldı.
