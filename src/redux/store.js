@@ -12,8 +12,6 @@ const initialState = {
   suggestions: [],
 };
 
-console.log(reducers);
-
 const composeEnhancers = composeWithDevTools({});
 const middleware = applyMiddleware(reduxPromise, thunk);
 
