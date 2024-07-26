@@ -1,7 +1,7 @@
 import { fetchCardItems } from "../../util/fetchCardItems";
 import _ from "lodash";
-import {setSuggestionsAction} from "../reducers/suggestionsReducer";
-import {setLoadingAction} from "../reducers/loadingReducer";
+import { setSuggestionsAction } from "../reducers/suggestionsReducer";
+import { setLoadingAction } from "../reducers/loadingReducer";
 
 const CARD_DATA = "DEMO/CARD_DATA";
 const FETCH_AND_FILTER_DATA = "FETCH_AND_FILTER_DATA";
@@ -11,7 +11,7 @@ export function cardDataAction(data) {
   return {
     type: CARD_DATA,
     payload: {
-      cardData: data
+      cardData: data,
     },
   };
 }
@@ -32,23 +32,26 @@ export function cardDataReducer(state = [], { type, payload }) {
 export function fetchAndFilterData(tag = null) {
   return async (dispatch, getState) => {
     try {
-      const {searchBar, suggestions} = getState()
+      const { searchBar, suggestions } = getState();
 
-      dispatch(setLoadingAction(true))
+      dispatch(setLoadingAction(true));
       const res = await fetchCardItems();
       const tagData = _.uniq(_.flatten(res.data.map((item) => item.tags)));
-      const filteredItems = res.data.filter(card => {
-        const isTagged = tag ? card.tags.includes(tag) : true
-        const isSearched = searchBar.length ? card.title.toLowerCase().indexOf(searchBar.toLowerCase()) > -1 || card.tags.includes(searchBar) : true
-        return isTagged && isSearched
-      })
-      if(!suggestions.length) {
-        dispatch(setSuggestionsAction(tagData))
+      const filteredItems = res.data.filter((card) => {
+        const isTagged = tag ? card.tags.includes(tag) : true;
+        const isSearched = searchBar.length
+          ? card.title.toLowerCase().indexOf(searchBar.toLowerCase()) > -1 ||
+            card.tags.includes(searchBar)
+          : true;
+        return isTagged && isSearched;
+      });
+      if (!suggestions.length) {
+        dispatch(setSuggestionsAction(tagData));
       }
       dispatch(cardDataAction(filteredItems));
-      dispatch(setLoadingAction(false))
+      dispatch(setLoadingAction(false));
     } catch (err) {
-      dispatch(setLoadingAction(false))
+      dispatch(setLoadingAction(false));
       console.error(err.message);
     }
   };
