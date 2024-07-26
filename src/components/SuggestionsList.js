@@ -15,18 +15,8 @@ export const SuggestionsList = ({ head }) => {
   const loading = useSelector((store) => store.loading);
   const suggestions = useSelector((store) => store.suggestions);
 
-  useEffect(() => {
-    if (cardData.length > 0) {
-      const tags = _.uniq(_.flatten(cardData.map((item) => item.tags)));
-
-      dispatch(FetchAndAllTagData(tags));
-      dispatch(setLoadingAction(false));
-    }
-    dispatch(cardDataAction(cardData));
-  }, [cardData, dispatch]);
-
   const handleSuggestionClick = (tag) => {
-    dispatch(cardDataAction(cardData, tag));
+    dispatch(fetchAndFilterData(tag));
   };
 
   const handleAllClick = () => {

@@ -10,17 +10,20 @@ export const Context = createContext();
 
 const ContextProvider = (props) => {
   const dispatch = useDispatch();
-  useEffect(() => {
+  /*useEffect(() => {
     dispatch(fetchAndFilterData());
-  }, []);
+  }, []);*/
 
   return <Context.Provider value={{}}>{props.children}</Context.Provider>;
 };
 
 export const MainContainer = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchAndFilterData())
+    }, []);
   return (
     <div className="container">
-      <ContextProvider>
         <Navbar title={"RF"} />
         <SearchContainer
           head={"Hello, May I Help You?"}
@@ -29,7 +32,6 @@ export const MainContainer = () => {
         />
         <SuggestionsList head={"Suggestions:"} />
         <BoxContainer />
-      </ContextProvider>
     </div>
   );
 };

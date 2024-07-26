@@ -1,16 +1,17 @@
 import { fetchCardItems } from "../../util/fetchCardItems";
 import _ from "lodash";
+import {setSuggestionsAction} from "../reducers/suggestionsReducer";
+import {setLoadingAction} from "../reducers/loadingReducer";
 
 const CARD_DATA = "DEMO/CARD_DATA";
 const FETCH_AND_FILTER_DATA = "FETCH_AND_FILTER_DATA";
 const FETCH_AND_ALL_TAG_DATA = "FETCH_AND_ALL_TAG_DATA";
 
-export function cardDataAction(data, tag = null) {
+export function cardDataAction(data) {
   return {
     type: CARD_DATA,
     payload: {
-      cardData: data,
-      tag: tag,
+      cardData: data
     },
   };
 }
@@ -18,11 +19,6 @@ export function cardDataAction(data, tag = null) {
 export function cardDataReducer(state = [], { type, payload }) {
   switch (type) {
     case CARD_DATA:
-      if (payload.tag) {
-        return payload.cardData.filter((item) =>
-          item.tags.includes(payload.tag)
-        );
-      }
       return payload.cardData;
     case FETCH_AND_FILTER_DATA:
       return payload.cardData;
@@ -33,33 +29,26 @@ export function cardDataReducer(state = [], { type, payload }) {
   }
 }
 
-export function fetchAndFilterData(term = "") {
-  return async (dispatch) => {
+export function fetchAndFilterData(tag = null) {
+  return async (dispatch, getState) => {
     try {
-      const res = await fetchCardItems();
-      const filteredItems = res.data.filter(
-        (item) =>
-          item.title.toLowerCase().includes(term.toLowerCase()) ||
-          item.tags.some((tag) =>
-            tag.toLowerCase().includes(term.toLowerCase())
-          )
-      );
-      dispatch(cardDataAction(filteredItems));
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-}
+      const {searchBar, suggestions} = getState()
 
-export function FetchAndAllTagData() {
-  return async (dispatch) => {
-    try {
+      dispatch(setLoadingAction(true))
       const res = await fetchCardItems();
-      if (res.Data.length > 0) {
-        const AllTagData = _.uniq(_.flatten(res.data.map((item) => item.tags)));
-        dispatch(cardDataAction(AllTagData));
+      const tagData = _.uniq(_.flatten(res.data.map((item) => item.tags)));
+      const filteredItems = res.data.filter(card => {
+        const isTagged = tag ? card.tags.includes(tag) : true
+        const isSearched = searchBar.length ? card.title.toLowerCase().indexOf(searchBar.toLowerCase()) > -1 || card.tags.includes(searchBar) : true
+        return isTagged && isSearched
+      })
+      if(!suggestions.length) {
+        dispatch(setSuggestionsAction(tagData))
       }
+      dispatch(cardDataAction(filteredItems));
+      dispatch(setLoadingAction(false))
     } catch (err) {
+      dispatch(setLoadingAction(false))
       console.error(err.message);
     }
   };
