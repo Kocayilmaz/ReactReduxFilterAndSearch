@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Drawer } from "@mantine/core";
+import { useSelector, useDispatch } from "react-redux";
+import { setOpenedAction } from "../redux/reducers/OpenerReducer";
 import logo from "../assets/logo192.png";
 import defaultProfileImg from "../İmages/images.jpg";
-import { useSelector } from "react-redux";
 
 export const Navbar = () => {
-  const [opened, setOpened] = useState(false);
-  const selectedOption = useSelector((store) => store.selectedOption);
+  const dispatch = useDispatch();
+  const opened = useSelector((state) => state.opener.opened);
+  const selectedOption = useSelector((state) => state.selectedOption);
 
   return (
     <div className="navbar">
@@ -21,14 +23,14 @@ export const Navbar = () => {
             src={selectedOption ? selectedOption.image : defaultProfileImg}
             alt="Profile"
             className="profile-image"
-            onClick={() => setOpened(true)}
+            onClick={() => dispatch(setOpenedAction(true))}
           />
         </li>
       </ul>
 
       <Drawer
         opened={opened}
-        onClose={() => setOpened(false)}
+        onClose={() => dispatch(setOpenedAction(false))}
         position="right"
         size="md"
       >

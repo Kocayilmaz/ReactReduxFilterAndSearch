@@ -33,17 +33,17 @@ export function fetchAndFilterData(tag = null) {
   return async (dispatch, getState) => {
     try {
       const { searchBar, suggestions } = getState();
-
-      dispatch(setLoadingAction(true));
       const res = await fetchCardItems();
       const tagData = _.uniq(_.flatten(res.data.map((item) => item.tags)));
       const filteredItems = res.data.filter((card) => {
         const isTagged = tag ? card.tags.includes(tag) : true;
         const isSearched = searchBar.length
           ? card.title.toLowerCase().indexOf(searchBar.toLowerCase()) > -1 ||
-            card.tags.includes(searchBar)
-          : true;
-        return isTagged && isSearched;
+            card.tags
+              .map((tag) => tag.toLowerCase())
+              .includes(searchBar.toLowerCase())
+          : null;
+        return isSearched || isTagged;
       });
       if (!suggestions.length) {
         dispatch(setSuggestionsAction(tagData));
