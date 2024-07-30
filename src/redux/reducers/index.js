@@ -5,6 +5,7 @@ import { selectedOptionReducer } from "./selectedOptionReducer";
 import { loadingReducer } from "./loadingReducer";
 import { suggestionsReducer } from "./suggestionsReducer";
 import { openerReducer } from "./OpenerReducer";
+import navReducer from "./NavReducer";
 
 export default combineReducers({
   cardData: cardDataReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   loading: loadingReducer,
   suggestions: suggestionsReducer,
   opener: openerReducer,
+  nav: navReducer,
 });

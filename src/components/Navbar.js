@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Drawer, Button, List, Textarea } from "@mantine/core";
 import { useSelector, useDispatch } from "react-redux";
 import { setOpenedAction } from "../redux/reducers/OpenerReducer";
+import {
+  toggleCommunicationAction,
+  toggleProfileAction,
+} from "../redux/reducers/NavReducer";
 import logo from "../assets/logo192.png";
 import defaultProfileImg from "../İmages/images.jpg";
 import { Home, User, Settings, Logout } from "tabler-icons-react";
@@ -10,16 +14,8 @@ export const Navbar = () => {
   const dispatch = useDispatch();
   const opened = useSelector((state) => state.opener.opened);
   const selectedOption = useSelector((state) => state.selectedOption);
-  const [communicationOpen, setCommunicationOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState(false);
-
-  const handleCommunicationClick = () => {
-    setCommunicationOpen(!communicationOpen);
-  };
-
-  const handleProfileClick = () => {
-    setProfileOpen(!profileOpen);
-  };
+  const communicationOpen = useSelector((state) => state.nav.communicationOpen);
+  const profileOpen = useSelector((state) => state.nav.profileOpen);
 
   return (
     <div className="navbar">
@@ -54,7 +50,10 @@ export const Navbar = () => {
             >
               Home Page
             </List.Item>
-            <List.Item icon={<User />} onClick={handleProfileClick}>
+            <List.Item
+              icon={<User />}
+              onClick={() => dispatch(toggleProfileAction())}
+            >
               Profile
               {profileOpen && (
                 <div style={{ marginTop: "10px" }}>
@@ -93,7 +92,10 @@ the growth of the team and the company.`}
                 </div>
               )}
             </List.Item>
-            <List.Item icon={<Settings />} onClick={handleCommunicationClick}>
+            <List.Item
+              icon={<Settings />}
+              onClick={() => dispatch(toggleCommunicationAction())}
+            >
               Communication
               {communicationOpen && (
                 <ul>
