@@ -4,13 +4,13 @@ import { SearchContainer } from "./SearchContainer";
 import { SuggestionsList } from "./SuggestionsList";
 import { BoxContainer } from "./BoxContainer";
 import { useDispatch } from "react-redux";
-import { fetchAndFilterData } from "../redux/reducers/CardDataReducer";
+import { fetchCardData } from "../redux/asyncThunks/fetchCardData";
 
 export const Context = createContext();
 export const MainContainer = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchAndFilterData());
+    dispatch(fetchCardData());
   }, []);
   return (
     <div className="container">

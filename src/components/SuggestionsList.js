@@ -3,19 +3,19 @@ import { Suggestions } from "./Suggestions";
 import _ from "lodash";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { fetchAndFilterData } from "../redux/reducers/CardDataReducer";
+import { cardDataAction } from "../redux/toolkitReducers/CardDataSlice";
 
 export const SuggestionsList = ({ head }) => {
   const dispatch = useDispatch();
-  const loading = useSelector((store) => store.loading);
+  const loading = useSelector((store) => store.uiState.loading);
   const suggestions = useSelector((store) => store.suggestions);
 
   const handleSuggestionClick = (tag) => {
-    dispatch(fetchAndFilterData(tag));
+    dispatch(cardDataAction(tag));
   };
 
   const handleAllClick = () => {
-    dispatch(fetchAndFilterData());
+    dispatch(cardDataAction());
   };
 
   return (

@@ -5,27 +5,28 @@ import makeAnimated from "react-select/animated";
 import AsyncSelect from "react-select/async";
 import axios from "axios";
 import "../App.scss";
-/* import { Context } from "./MainContainer"; */
 import { useSelector, useDispatch } from "react-redux";
-import { fetchAndFilterData } from "../redux/reducers/CardDataReducer";
-import { setSearchBarAction } from "../redux/reducers/searchBarReducer";
-import { setSelectedOptionAction } from "../redux/reducers/selectedOptionReducer";
-import { setLoadingAction } from "../redux/reducers/loadingReducer";
+import { cardDataAction } from "../redux/toolkitReducers/CardDataSlice";
+import {
+  setSearchBar,
+  setSelectedOption,
+} from "../redux/toolkitReducers/SearchAndSelectionSlice";
+import { setLoading } from "../redux/toolkitReducers/Uistate";
 
 const animatedComponents = makeAnimated();
 
 export const SearchContainer = ({ head, title, desc }) => {
   const dispatch = useDispatch();
   const cardData = useSelector((store) => store.cardData);
-  const searchBar = useSelector((store) => store.searchBar);
-  const selectedOption = useSelector((store) => store.selectedOption);
-  const loading = useSelector((store) => store.loading);
-  /* const { loading, setLoading } = useContext(Context); */
+  const searchBar = useSelector((store) => store.searchAndSelection.searchBar);
+  const selectedOption = useSelector(
+    (store) => store.searchAndSelection.selectedOption
+  );
+  const loading = useSelector((store) => store.uiState.loading);
 
   useEffect(() => {
-    dispatch(setLoadingAction(false));
-    /* setLoading(false); */
-  }, [/* setLoading  */ dispatch]);
+    dispatch(setLoading(false));
+  }, [dispatch]);
 
   const fetchCharacterOptions = (inputValue, cb) => {
     axios({
@@ -41,18 +42,18 @@ export const SearchContainer = ({ head, title, desc }) => {
   };
 
   const handleOptionChange = async (selectedOption) => {
-    dispatch(setSelectedOptionAction(selectedOption));
+    dispatch(setSelectedOption(selectedOption));
   };
 
   const debouncedSearch = useCallback(
     _.debounce((term) => {
-      dispatch(fetchAndFilterData(term, cardData));
+      dispatch(cardDataAction(term, cardData));
     }, 1500)
   );
 
   const handleSearch = (e) => {
     const term = e.target.value;
-    dispatch(setSearchBarAction(term));
+    dispatch(setSearchBar(term));
     debouncedSearch(term);
   };
 

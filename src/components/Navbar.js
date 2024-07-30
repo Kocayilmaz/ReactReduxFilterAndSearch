@@ -1,22 +1,25 @@
 import React from "react";
 import { Drawer, Button, List, Textarea } from "@mantine/core";
 import { useSelector, useDispatch } from "react-redux";
-import { setOpenedAction } from "../redux/reducers/OpenerReducer";
+import { setOpened } from "../redux/toolkitReducers/Uistate";
 import {
-  toggleCommunicationAction,
-  toggleProfileAction,
-} from "../redux/reducers/NavReducer";
+  toggleCommunication,
+  toggleProfile,
+} from "../redux/toolkitReducers/Uistate";
 import logo from "../assets/logo192.png";
 import defaultProfileImg from "../İmages/images.jpg";
 import { Home, User, Settings, Logout } from "tabler-icons-react";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
-  const opened = useSelector((state) => state.opener.opened);
-  const selectedOption = useSelector((state) => state.selectedOption);
-  const communicationOpen = useSelector((state) => state.nav.communicationOpen);
-  const profileOpen = useSelector((state) => state.nav.profileOpen);
-
+  const opened = useSelector((state) => state.uiState.opener.opened);
+  const selectedOption = useSelector(
+    (state) => state.searchAndSelection.selectedOption
+  );
+  const communicationOpen = useSelector(
+    (state) => state.uiState.nav.communicationOpen
+  );
+  const profileOpen = useSelector((state) => state.uiState.nav.profileOpen);
   return (
     <div className="navbar">
       <div className="logo-title">
@@ -30,14 +33,14 @@ export const Navbar = () => {
             src={selectedOption ? selectedOption.image : defaultProfileImg}
             alt="Profile"
             className="profile-image"
-            onClick={() => dispatch(setOpenedAction(true))}
+            onClick={() => dispatch(setOpened(true))}
           />
         </li>
       </ul>
 
       <Drawer
         opened={opened}
-        onClose={() => dispatch(setOpenedAction(false))}
+        onClose={() => dispatch(setOpened(false))}
         position="right"
         size="md"
       >
@@ -46,13 +49,13 @@ export const Navbar = () => {
           <List>
             <List.Item
               icon={<Home />}
-              onClick={() => dispatch(setOpenedAction(false))}
+              onClick={() => dispatch(setOpened(false))}
             >
               Home Page
             </List.Item>
             <List.Item
               icon={<User />}
-              onClick={() => dispatch(toggleProfileAction())}
+              onClick={() => dispatch(toggleProfile())}
             >
               Profile
               {profileOpen && (
@@ -94,7 +97,7 @@ the growth of the team and the company.`}
             </List.Item>
             <List.Item
               icon={<Settings />}
-              onClick={() => dispatch(toggleCommunicationAction())}
+              onClick={() => dispatch(toggleCommunication())}
             >
               Communication
               {communicationOpen && (
@@ -138,7 +141,7 @@ the growth of the team and the company.`}
             </List.Item>
             <List.Item
               icon={<Logout />}
-              onClick={() => dispatch(setOpenedAction(false))}
+              onClick={() => dispatch(setOpened(false))}
             >
               Exit
             </List.Item>
@@ -148,7 +151,7 @@ the growth of the team and the company.`}
             color="blue"
             fullWidth
             style={{ marginTop: "20px" }}
-            onClick={() => dispatch(setOpenedAction(false))}
+            onClick={() => dispatch(setOpened(false))}
           >
             Close
           </Button>
