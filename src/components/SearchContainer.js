@@ -6,7 +6,7 @@ import AsyncSelect from "react-select/async";
 import axios from "axios";
 import "../App.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { cardDataAction } from "../redux/toolkitReducers/CardDataSlice";
+import { fetchCardData } from "../redux/asyncThunks/fetchCardData";
 import {
   setSearchBar,
   setSelectedOption,
@@ -17,7 +17,6 @@ const animatedComponents = makeAnimated();
 
 export const SearchContainer = ({ head, title, desc }) => {
   const dispatch = useDispatch();
-  const cardData = useSelector((store) => store.cardData);
   const searchBar = useSelector((store) => store.searchAndSelection.searchBar);
   const selectedOption = useSelector(
     (store) => store.searchAndSelection.selectedOption
@@ -46,15 +45,15 @@ export const SearchContainer = ({ head, title, desc }) => {
   };
 
   const debouncedSearch = useCallback(
-    _.debounce((term) => {
-      dispatch(cardDataAction(term, cardData));
-    }, 1500)
+    _.debounce(() => {
+      dispatch(fetchCardData());
+    }, 500),
+    [dispatch]
   );
-
   const handleSearch = (e) => {
     const term = e.target.value;
     dispatch(setSearchBar(term));
-    debouncedSearch(term);
+    debouncedSearch(searchBar);
   };
 
   return (

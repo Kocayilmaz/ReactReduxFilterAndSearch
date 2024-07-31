@@ -4,9 +4,10 @@ import _ from "lodash";
 
 export const fetchCardData = createAsyncThunk(
   "CARDS/FETCH",
-  async (tag = null, { getState, dispatch }) => {
+  async (tag = null, { getState }) => {
     try {
-      const { cardData } = getState().cardData;
+      const { searchBar } = getState().searchAndSelection;
+
       const res = await fetchCardItems();
 
       if (!res.data) {
@@ -14,15 +15,17 @@ export const fetchCardData = createAsyncThunk(
       }
 
       const tagData = _.uniq(_.flatten(res.data.map((item) => item.tags)));
+
       const filteredItems = res.data.filter((card) => {
         const isTagged = tag ? card.tags.includes(tag) : true;
-        const isSearched = cardData.length
-          ? card.title.toLowerCase().indexOf(cardData.toLowerCase()) > -1 ||
-            card.tags
-              .map((tag) => tag.toLowerCase())
-              .includes(cardData.toLowerCase())
+        const isSearched = searchBar
+          ? card.title.toLowerCase().includes(searchBar.toLowerCase()) ||
+            card.tags.some((t) =>
+              t.toLowerCase().includes(searchBar.toLowerCase())
+            )
           : true;
-        return isSearched || isTagged;
+
+        return isTagged && isSearched;
       });
 
       return { filteredItems, tagData };

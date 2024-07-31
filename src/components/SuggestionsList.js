@@ -3,19 +3,19 @@ import { Suggestions } from "./Suggestions";
 import _ from "lodash";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { cardDataAction } from "../redux/toolkitReducers/CardDataSlice";
+import { fetchCardData } from "../redux/asyncThunks/fetchCardData";
 
 export const SuggestionsList = ({ head }) => {
   const dispatch = useDispatch();
-  const loading = useSelector((store) => store.uiState.loading);
-  const suggestions = useSelector((store) => store.suggestions);
+  const loading = useSelector((store) => store.cardData.loading);
+  const suggestions = useSelector((store) => store.cardData.suggestions);
 
   const handleSuggestionClick = (tag) => {
-    dispatch(cardDataAction(tag));
+    dispatch(fetchCardData(tag));
   };
 
   const handleAllClick = () => {
-    dispatch(cardDataAction());
+    dispatch(fetchCardData());
   };
 
   return (

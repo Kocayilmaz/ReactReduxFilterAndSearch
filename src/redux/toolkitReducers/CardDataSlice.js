@@ -18,11 +18,11 @@ export const cardDataSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchCardData.pending, (state, action) => {
       state.loading = true;
-      console.log(state.loading, "Fetching card data...");
+      /* console.log(state.loading, "Fetching card data..."); */
     });
 
     builder.addCase(fetchCardData.fulfilled, (state, action) => {
-      console.log(action.payload, "Action payload in fulfilled");
+      /* console.log(action.payload, "Action payload in fulfilled"); */
       if (action.payload) {
         state.cardData = action.payload.filteredItems || [];
         state.suggestions = action.payload.tagData || [];
@@ -31,14 +31,14 @@ export const cardDataSlice = createSlice({
         state.suggestions = [];
       }
       state.loading = false;
-      console.log(state.loading, "Fetching card data completed.");
+      /* console.log(state.loading, "Fetching card data completed.");
       console.log(state.cardData);
-      console.log(state.suggestions);
+      console.log(state.suggestions); */
     });
 
     builder.addCase(fetchCardData.rejected, (state, action) => {
       state.loading = false;
-      console.log(state.loading, "Failed to fetch card data.");
+      /* console.log(state.loading, "Failed to fetch card data."); */
     });
   },
 });

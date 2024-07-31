@@ -5,13 +5,18 @@ import { SuggestionsList } from "./SuggestionsList";
 import { BoxContainer } from "./BoxContainer";
 import { useDispatch } from "react-redux";
 import { fetchCardData } from "../redux/asyncThunks/fetchCardData";
+/* import { cardDataAction } from "../redux/toolkitReducers/CardDataSlice";
+import { useSelector } from "react-redux"; */
 
-export const Context = createContext();
 export const MainContainer = () => {
+  /*  const cardData = useSelector((store) => store.cardData); */
+
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchCardData());
-  }, []);
+  }, [dispatch]);
+
   return (
     <div className="container">
       <Navbar title={"RF"} />

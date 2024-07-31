@@ -11,7 +11,6 @@ function App() {
   useEffect(() => {
     dispatch(fetchCardData());
   }, []);
-  return <></>;
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
       <div className="container">
