@@ -12,8 +12,8 @@ This project is a web application built with React and Mantine. The application 
 - 📱 **Responsive Design:** Responsive design suitable for different screen sizes.
 
 
+<img src="https://github.com/user-attachments/assets/15949c8e-3669-4e4d-a065-9e0332351477" alt="Demo GIF" width="600" />
 
-![4](https://github.com/user-attachments/assets/15949c8e-3669-4e4d-a065-9e0332351477)
 
 
 ## Technologies Used
@@ -45,7 +45,8 @@ Bu proje, React ve Mantine kullanarak oluşturulmuş bir web uygulamasıdır. Uy
 
 
 
-![4](https://github.com/user-attachments/assets/15949c8e-3669-4e4d-a065-9e0332351477)
+<img src="https://github.com/user-attachments/assets/15949c8e-3669-4e4d-a065-9e0332351477" alt="Demo GIF" width="600" />
+
 
 
 
