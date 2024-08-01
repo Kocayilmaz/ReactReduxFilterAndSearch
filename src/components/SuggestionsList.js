@@ -7,7 +7,7 @@ import { fetchCardData } from "../redux/asyncThunks/fetchCardData";
 
 export const SuggestionsList = ({ head }) => {
   const dispatch = useDispatch();
-  const loading = useSelector((store) => store.cardData.loading);
+  const loading = useSelector((store) => store.uiState.loading);
   const suggestions = useSelector((store) => store.cardData.suggestions);
 
   const handleSuggestionClick = (tag) => {
