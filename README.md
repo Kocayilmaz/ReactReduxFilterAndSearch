@@ -17,6 +17,7 @@ This project is a web application built with React and Mantine. The application 
 
 
 
+
 ## Technologies Used
 
 - ⚛️ **React:** Used for building the user interface.
