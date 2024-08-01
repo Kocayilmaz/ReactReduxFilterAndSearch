@@ -11,13 +11,7 @@ This project is a web application built with React and Mantine. The application 
 - 🔄 **State Management with Redux:** Application state management using Redux.
 - 📱 **Responsive Design:** Responsive design suitable for different screen sizes.
 
-
-<img src="https://github.com/user-attachments/assets/15949c8e-3669-4e4d-a065-9e0332351477" alt="Demo GIF" width="400" />
-
-
-
-
-
+<a href="https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/view?usp=sharing" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; color: white; background: linear-gradient(45deg, #ff6b6b, #ffcc80); border-radius: 5px; text-decoration: none;">Watch Video</a>
 
 ## Technologies Used
 
@@ -28,38 +22,24 @@ This project is a web application built with React and Mantine. The application 
 - 🎨 **SCSS:** Used for styling.
 - 🔄 **Lodash:** Used for data processing and filtering.
 - 👽 **Rick and Morty API:** Used to fetch character data.
-
-
 ---
-
-
-"# React Mantine Rick and Morty Project
+# React Mantine Rick and Morty Project
 
 Bu proje, React ve Mantine kullanarak oluşturulmuş bir web uygulamasıdır. Uygulama, Rick and Morty API'sini kullanarak karakterleri aramanıza ve filtrelemenize olanak tanır. Ayrıca, Mantine bileşenleri ve bazı özel stiller kullanarak zarif bir kullanıcı arayüzü sağlar.
 
 ## Özellikler
 
-- 🔍**Karakter Arama:** Rick and Morty API üzerinden karakter arayabilir ve seçilen karakterin resmini görüntüleyebilirsiniz.
-- 📝**Kart Görünümü:**Kartlar json local apisi üzerinden alınmaktadır. Örnek olması amaçlanmıştır.
-- 📜**Filtreleme ve Öneriler:** Belirli etiketlere göre karakterleri filtreleyebilir ve öneriler alabilirsiniz.
-- 🎥**Video Arka Plan:** Sayfanın arka planında sürekli oynayan bir video bulunmaktadır.
-- 🔄**Redux ile Durum Yönetimi:** Uygulamanın durum yönetimi Redux kullanılarak yapılmıştır.
-- 📱**Esnek ve Duyarlı Tasarım:** Farklı ekran boyutlarına uygun duyarlı bir tasarım.
+- 🔍 **Karakter Arama:** Rick and Morty API üzerinden karakter arayabilir ve seçilen karakterin resmini görüntüleyebilirsiniz.
+- 📝 **Kart Görünümü:** Kartlar json local apisi üzerinden alınmaktadır. Örnek olması amaçlanmıştır.
+- 📜 **Filtreleme ve Öneriler:** Belirli etiketlere göre karakterleri filtreleyebilir ve öneriler alabilirsiniz.
+- 🎥 **Video Arka Plan:** Sayfanın arka planında sürekli oynayan bir video bulunmaktadır.
+- 🔄 **Redux ile Durum Yönetimi:** Uygulamanın durum yönetimi Redux kullanılarak yapılmıştır.
+- 📱 **Esnek ve Duyarlı Tasarım:** Farklı ekran boyutlarına uygun duyarlı bir tasarım.
 
-
-
-<iframe src="https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/preview" width="600" height="400" allow="autoplay"></iframe>
-
-
-
-
+<a href="https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/view?usp=sharing" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; color: white; background: linear-gradient(45deg, #ff6b6b, #ffcc80); border-radius: 5px; text-decoration: none;">Video'yu İzle</a>
 
 ## Kullanılan Teknolojiler
 
-- ⚛️**React:** Kullanıcı arayüzünü oluşturmak için kullanıldı.
-- 🏛️**Mantine:** React bileşen kütüphanesi olarak kullanıldı.
-- 🗃️**Redux:** Uygulamanın durum yönetimi için kullanıldı.
-- 🌐**Axios:** API çağrılarını yönetmek için kullanıldı.
-- 🎨**SCSS:** Stil dosyaları için kullanıldı.
-- 🔄**Lodash:** Veri işleme ve filtreleme işlemleri için kullanıldı.
-- 👽**Rick and Morty API:** Karakter verilerini almak için kullanıldı.
+- ⚛️ **React:** Kullanıcı arayüzünü oluşturmak için kullanıldı.
+- 🏛️ **Mantine:** React bileşen kütüphanesi olarak kullanıldı.
+- 🗃
