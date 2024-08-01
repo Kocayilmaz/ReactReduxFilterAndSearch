@@ -12,7 +12,8 @@ This project is a web application built with React and Mantine. The application 
 - 📱 **Responsive Design:** Responsive design suitable for different screen sizes.
 
 
-<img src="https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/view?usp=sharing" alt="MP4" width="600" />
+<iframe src="https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/preview" width="600" height="400" allow="autoplay"></iframe>
+
 
 
 
@@ -45,7 +46,8 @@ Bu proje, React ve Mantine kullanarak oluşturulmuş bir web uygulamasıdır. Uy
 
 
 
-<img src="https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/view?usp=sharing" alt="MP4" width="600" />
+<iframe src="https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/preview" width="600" height="400" allow="autoplay"></iframe>
+
 
 
 
