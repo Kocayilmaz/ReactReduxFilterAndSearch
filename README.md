@@ -11,13 +11,13 @@ This project is a web application built with React and Mantine. The application 
 - 🔄 **State Management with Redux:** Application state management using Redux.
 - 📱 **Responsive Design:** Responsive design suitable for different screen sizes.
 
-  # Trailer
+  ### Trailer
 https://github.com/user-attachments/assets/bde86c2a-c507-4ef6-9032-3b0364b7716d
 
 
 
 
-<a href="https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/view?usp=sharing" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; color: white; background: linear-gradient(45deg, #ff6b6b, #ffcc80); border-radius: 5px; text-decoration: none;">Watch Video 🎥</a>
+<a href="https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/view?usp=sharing" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; color: white; background: linear-gradient(45deg, #ff6b6b, #ffcc80); border-radius: 5px; text-decoration: none;">Watch Full Video 🎥</a>
 
 ## Technologies Used
 
@@ -42,10 +42,10 @@ Bu proje, React ve Mantine kullanarak oluşturulmuş bir web uygulamasıdır. Uy
 - 🔄 **Redux ile Durum Yönetimi:** Uygulamanın durum yönetimi Redux kullanılarak yapılmıştır.
 - 📱 **Esnek ve Duyarlı Tasarım:** Farklı ekran boyutlarına uygun duyarlı bir tasarım.
 
-# Trailer
+### Trailer
 https://github.com/user-attachments/assets/bde86c2a-c507-4ef6-9032-3b0364b7716d
 
-<a href="https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/view?usp=sharing" target="_blank" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; color: white; background: linear-gradient(90deg, rgba(33,150,243,1) 0%, rgba(30,233,182,1) 100%); border-radius: 5px; text-decoration: none;">Watch Video🎥</a>
+<a href="https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/view?usp=sharing" target="_blank" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; color: white; background: linear-gradient(90deg, rgba(33,150,243,1) 0%, rgba(30,233,182,1) 100%); border-radius: 5px; text-decoration: none;">Videonun Tamammını İzle🎥</a>
 
 
 ## Kullanılan Teknolojiler
