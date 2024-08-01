@@ -7,7 +7,7 @@ import {
   toggleProfile,
 } from "../redux/toolkitReducers/Uistate";
 import logo from "../assets/logo192.png";
-import defaultProfileImg from "../İmages/images.jpg";
+import defaultProfileImg from "../İmages/8847419.png";
 import { Home, User, Settings, Logout } from "tabler-icons-react";
 
 export const Navbar = () => {
