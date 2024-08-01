@@ -12,7 +12,7 @@ This project is a web application built with React and Mantine. The application 
 - 📱 **Responsive Design:** Responsive design suitable for different screen sizes.
 
   
-<img src="https://github.com/user-attachments/assets/bde86c2a-c507-4ef6-9032-3b0364b7716d" alt="mp4" width="600" />
+https://github.com/user-attachments/assets/bde86c2a-c507-4ef6-9032-3b0364b7716d
 
 
 
@@ -45,7 +45,8 @@ Bu proje, React ve Mantine kullanarak oluşturulmuş bir web uygulamasıdır. Uy
 
 https://github.com/user-attachments/assets/bde86c2a-c507-4ef6-9032-3b0364b7716d
 
-<a href="https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/view?usp=sharing" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; color: white; background: #ffcc80 ; border-radius: 5px; text-decoration: none;">Video'yu İzle</a>
+<a href="https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/view?usp=sharing" target="_blank" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; color: white; background: linear-gradient(90deg, rgba(33,150,243,1) 0%, rgba(30,233,182,1) 100%); border-radius: 5px; text-decoration: none;">Watch Video</a>
+
 
 ## Kullanılan Teknolojiler
 
