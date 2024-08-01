@@ -3,7 +3,7 @@ import { SimpleGrid } from "@mantine/core";
 import { useSelector } from "react-redux";
 
 export const BoxContainer = () => {
-  const cardData = useSelector((store) => store.cardData);
+  const cardData = useSelector((store) => store.cardData.cardData);
 
   return (
     <div className="big-box-container">

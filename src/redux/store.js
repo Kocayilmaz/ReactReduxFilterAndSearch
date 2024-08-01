@@ -10,6 +10,8 @@ const initialState = {
   selectedOption: null,
   loading: false,
   suggestions: [],
+  tag: null,
+  opened: false,
 };
 
 const composeEnhancers = composeWithDevTools({});

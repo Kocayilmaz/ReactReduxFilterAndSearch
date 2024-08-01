@@ -3,8 +3,14 @@ import { MainContainer } from "./components/MainContainer";
 import { MantineProvider } from "@mantine/core";
 import Video from "./assets/Background1.mp4";
 import "./App.scss";
+import { fetchCardData } from "./redux/asyncThunks/fetchCardData";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchCardData());
+  }, []);
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
       <div className="container">

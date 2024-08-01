@@ -1,26 +1,21 @@
-import React, { useEffect } from "react";
 import { Skeleton, Button } from "@mantine/core";
 import { Suggestions } from "./Suggestions";
 import _ from "lodash";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { fetchAndFilterData } from "../redux/reducers/CardDataReducer";
-import { cardDataAction } from "../redux/reducers/CardDataReducer";
-import { setLoadingAction } from "../redux/reducers/loadingReducer";
-import { FetchAndAllTagData } from "../redux/reducers/CardDataReducer";
+import { fetchCardData } from "../redux/asyncThunks/fetchCardData";
 
 export const SuggestionsList = ({ head }) => {
   const dispatch = useDispatch();
-  const cardData = useSelector((store) => store.cardData);
-  const loading = useSelector((store) => store.loading);
-  const suggestions = useSelector((store) => store.suggestions);
+  const loading = useSelector((store) => store.uiState.loading);
+  const suggestions = useSelector((store) => store.cardData.suggestions);
 
   const handleSuggestionClick = (tag) => {
-    dispatch(fetchAndFilterData(tag));
+    dispatch(fetchCardData(tag));
   };
 
   const handleAllClick = () => {
-    dispatch(fetchAndFilterData());
+    dispatch(fetchCardData());
   };
 
   return (

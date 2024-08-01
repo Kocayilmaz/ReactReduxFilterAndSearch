@@ -4,34 +4,29 @@ import { SearchContainer } from "./SearchContainer";
 import { SuggestionsList } from "./SuggestionsList";
 import { BoxContainer } from "./BoxContainer";
 import { useDispatch } from "react-redux";
-import { fetchAndFilterData } from "../redux/reducers/CardDataReducer";
-
-export const Context = createContext();
-
-const ContextProvider = (props) => {
-  const dispatch = useDispatch();
-  /*useEffect(() => {
-    dispatch(fetchAndFilterData());
-  }, []);*/
-
-  return <Context.Provider value={{}}>{props.children}</Context.Provider>;
-};
+import { fetchCardData } from "../redux/asyncThunks/fetchCardData";
+/* import { cardDataAction } from "../redux/toolkitReducers/CardDataSlice";
+import { useSelector } from "react-redux"; */
 
 export const MainContainer = () => {
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(fetchAndFilterData())
-    }, []);
+  /*  const cardData = useSelector((store) => store.cardData); */
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCardData());
+  }, [dispatch]);
+
   return (
     <div className="container">
-        <Navbar title={"RF"} />
-        <SearchContainer
-          head={"Hello, May I Help You?"}
-          title={"Pick Your Character"}
-          desc={"Type your questions"}
-        />
-        <SuggestionsList head={"Suggestions:"} />
-        <BoxContainer />
+      <Navbar title={"RF"} />
+      <SearchContainer
+        head={"Hello, May I Help You?"}
+        title={"Pick Your Character"}
+        desc={"Type your questions"}
+      />
+      <SuggestionsList head={"Suggestions:"} />
+      <BoxContainer />
     </div>
   );
 };

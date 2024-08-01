@@ -63,11 +63,16 @@ body {
     cursor: pointer;
     object-fit: cover;
   }
+
+  .close-button {
+    position: relative;
+    top: 1000px;
+    cursor: pointer;
+  }
 }
 
-// Sayfa içeriği navbar'ın altına gelmesi için padding ekliyoruz
 .content {
-  padding-top: 60px; // Navbar'ın yüksekliğine göre ayarlayın
+  padding-top: 80px;
 }
 
 .menu-content {
@@ -77,7 +82,26 @@ body {
     margin: 0 0 20px 0;
   }
 
-  /* Menü içeriğinin stilini buraya ekleyebilirsin */
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 16px;
+
+      svg {
+        margin-right: 10px;
+      }
+
+      &:hover {
+        color: #007bff;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 .greeting {
@@ -163,20 +187,20 @@ body {
   margin-top: 10px;
   max-width: 1140px;
   margin: 0 auto;
-}
 
-@media (max-width: 700px) {
-  .big-box-row {
-    flex-direction: column;
+  @media (max-width: 1024px) {
+    .big-box {
+      width: 31%;
+    }
   }
-  .big-box {
-    width: 100%;
-  }
-}
 
-@media (max-width: 1024px) {
-  .big-box {
-    width: 31%;
+  @media (max-width: 700px) {
+    .big-box-row {
+      flex-direction: column;
+    }
+    .big-box {
+      width: 100%;
+    }
   }
 }
 
