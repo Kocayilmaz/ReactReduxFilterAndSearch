@@ -12,7 +12,7 @@ This project is a web application built with React and Mantine. The application 
 - 📱 **Responsive Design:** Responsive design suitable for different screen sizes.
 
 
-[Watch Video](https://drive.google.com/file/d/1eexFUT6UfnL5CwJJi1gBxpiimwUdIJFF/view?usp=sharing)
+<img src="https://github.com/user-attachments/assets/15949c8e-3669-4e4d-a065-9e0332351477" alt="Demo GIF" width="400" />
 
 
 
